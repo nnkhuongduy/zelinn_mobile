@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/main_space"
+    android:layout_marginTop="@dimen/main_space"
+    android:layout_marginEnd="@dimen/main_space"
+    android:layout_marginBottom="@dimen/main_space"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/homepage_gretting"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sub_space"
+        android:layout_marginBottom="@dimen/sub_space"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/homepage_list_boards_btn"
+            style="@android:style/Widget.Material.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:backgroundTint="@android:color/transparent"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/homepage_list_boards"
+            android:textColor="@color/gray3" />
+
+        <Button
+            android:id="@+id/homepage_stats_btn"
+            style="@android:style/Widget.Material.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:backgroundTint="@android:color/transparent"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/homepage_stats"
+            android:textColor="@color/gray3" />
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/homepage_content_fragment"
+        android:name="com.example.zelinn.ui.home.HomeBoardListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

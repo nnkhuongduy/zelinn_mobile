@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Zelinn</string>
+
+    <!--  Common  -->
+
+    <string name="common_continue">Tiếp tục</string>
+
+    <!--  Splash  -->
+    <string name="splash_title_1">Quản lý nhiều việc hơn với Zelinn</string>
+    <string name="splash_subtitle_2">Lập kế hoạch và tổ chức gần như bất kì việc gì với bất cứ ai</string>
+
+    <!--  Login  -->
+    <string name="login">Đăng nhập bằng Email</string>
+    <string name="login_term">Bằng việc đăng ký, bạn đồng ý với Điều khoản dịch vụ và Chính sách riêng tư của chúng tôi.</string>
+    <string name="login_title">Hãy nhập email của bạn</string>
+    <string name="login_field_placeholder">Địa chỉ email</string>
+    <string name="login_subtitle">Chúng tôi sẽ gửi email chứa đường link có thể giúp bạn đăng nhập ngay lập tức</string>
+    <string name="login_mail_dialog_title">Đã gửi mail chứ mã xác thực</string>
+    <string name="login_mail_dialog_action">Điền mã xác thực</string>
+    <string name="login_verification_title">Xác thực tài khoản</string>
+    <string name="login_verification_subtitle">Nhập mã kích hoạt gồm 6 số được gửi trong mail của bạn</string>
+    <string name="registration_title">Tạo tài khoản mới</string>
+    <string name="registration_emaill">Email đăng nhập</string>
+    <string name="registration_name">Tên hiển thị</string>
+    <string name="registration_phone">Số điện thoại</string>
+    <string name="registration_birth">Ngày sinh</string>
+    <string name="registration_success">Đăng ký thành công</string>
+    <string name="login_success">Đăng nhập thành công</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--  Homepage  -->
+    <string name="homepage_gretting">Xin chào,</string>
+    <string name="homepage_list_boards">Danh sách bảng</string>
+    <string name="homepage_stats">Thống kê</string>
+    <string name="homepage_board_list_title">Bảng làm việc</string>
+    <string name="homepage_board_all">Tất cả</string>
+
+</resources>

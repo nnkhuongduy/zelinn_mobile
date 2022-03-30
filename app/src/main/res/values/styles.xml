@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Zelinn.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/Theme.Zelinn.AlertDialog.App</item>
+    </style>
+
+    <style name="Theme.Zelinn.AlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/Theme.Zelinn.ShapeAppearance</item>
+    </style>
+
+    <style name="Theme.Zelinn.ShapeAppearance" parent="ShapeAppearance.MaterialComponents">
+        <item name="cornerSize">@dimen/border_radius</item>
+    </style>
+
+    <style name="Theme.Zelinn.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingTop">@dimen/sub_space</item>
+        <item name="android:paddingBottom">@dimen/sub_space</item>
+        <item name="cornerRadius">@dimen/border_radius</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Theme.Zelinn.TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxCornerRadiusTopEnd">@dimen/half_space</item>
+        <item name="boxCornerRadiusTopStart">@dimen/half_space</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/half_space</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/half_space</item>
+    </style>
+</resources>

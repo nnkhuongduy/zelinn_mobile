@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Duy/.gradle/caches/transforms-3/5423c65485a974611bfb437c61e9a2e1/transformed/material-1.5.0/res/layout/mtrl_alert_dialog.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/drawable-anydpi/circle_colored.xml" value="0.298" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/drawable/ic_baseline_mail_outline_24.xml" value="0.298" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_home.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_login.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_login_mail_dialog.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_registration.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_verification.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_login_success.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_registration_success.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_dashboard.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_home_board_item.xml" value="0.33" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_home_board_list.xml" value="0.33" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_item.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_item_list.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_login_mail_dialog.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_notifications.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/login_mail_dialog.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/login_mail_fragment.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/login_success_dialog.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/menu_bottom_navigation.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/registration_success_dialog.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/switch_item.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/toolbar_homepage.xml" value="0.327445652173913" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3875" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3875" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/homepage_toolbar_menu.xml" value="0.3875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
