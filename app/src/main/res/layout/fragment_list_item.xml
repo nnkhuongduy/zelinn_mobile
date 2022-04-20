@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/half_space"
+    android:layout_marginEnd="@dimen/half_space"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/list_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/list_sort_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="5dp"
+            android:src="@drawable/ic_sort"
+            app:tint="@color/background_light" />
+
+        <TextView
+            android:id="@+id/list_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Đang thực hiện (3)"
+            android:textColor="@color/background_light"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/list_sort_setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="5dp"
+            android:src="@drawable/ic_more_horiz"
+            app:tint="@color/background_light" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/list_item_add_card_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_button_shape"
+        android:backgroundTint="@color/background_surface"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingTop="@dimen/half_space"
+        android:paddingBottom="@dimen/half_space"
+        android:src="@drawable/ic_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_item_layout" />
+
+    <Button
+        android:id="@+id/list_item_create_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background_surface"
+        android:text="@string/board_create_list"
+        android:visibility="gone"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="@+id/list_item_add_card_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_item_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_space"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_item_add_card_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:actionLayout="@layout/activity_home"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="Dashboard" />
 </menu>

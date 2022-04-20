@@ -1,16 +1,15 @@
 package com.example.zelinn.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.example.zelinn.BoardActivity
 import com.example.zelinn.R
 import com.example.zelinn.classes.BoardModel
-import com.example.zelinn.databinding.FragmentHomeBinding
 import com.example.zelinn.databinding.FragmentHomeBoardItemBinding
 
 class HomeBoardItemFragment: Fragment() {
@@ -41,21 +40,10 @@ class HomeBoardItemFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBoardItemBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val title = view.findViewById<TextView>(R.id.homepage_board_item_title)
-
-        title.text = arguments?.getString("name")
     }
 
     override fun onDestroyView() {
