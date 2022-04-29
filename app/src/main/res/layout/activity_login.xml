@@ -8,42 +8,46 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <TextView
+    <Button
         android:id="@+id/login_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/main_space"
-        android:background="?attr/actionModeCloseDrawable"
-        android:backgroundTint="@color/white"
-        android:minWidth="0dp" />
+        android:backgroundTint="@color/background"
+        android:minWidth="0dp"
+        android:padding="@dimen/half_space"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconPadding="0dp" />
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginEnd="20dp">
 
         <TextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_space"
             android:text="@string/login_title"
             android:textColor="@color/primary"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/login_title"
+            android:layout_marginTop="@dimen/half_space"
             app:boxBackgroundColor="@color/background_surface"
             app:boxCornerRadiusBottomEnd="@dimen/border_radius"
             app:boxCornerRadiusBottomStart="@dimen/border_radius"
             app:boxCornerRadiusTopEnd="@dimen/border_radius"
             app:boxCornerRadiusTopStart="@dimen/border_radius"
             app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_input_text"
@@ -58,23 +62,41 @@
             android:id="@+id/login_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/login_input"
-            android:layout_marginTop="@dimen/main_space"
+            android:layout_marginTop="@dimen/half_space"
             android:text="@string/login_subtitle"
             android:textColor="@color/gray3"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_input" />
 
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="fill_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/main_space"
-            android:layout_marginEnd="@dimen/main_space"
-            android:backgroundTint="@color/background_light"
-            android:clickable="false"
-            android:text="@string/common_continue" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/common_continue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/login_progress_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/login_btn"
+                app:layout_constraintEnd_toEndOf="@+id/login_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

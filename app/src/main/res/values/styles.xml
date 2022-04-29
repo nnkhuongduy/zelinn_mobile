@@ -25,4 +25,5 @@
         <item name="boxCornerRadiusBottomEnd">@dimen/half_space</item>
         <item name="boxCornerRadiusBottomStart">@dimen/half_space</item>
     </style>
+
 </resources>

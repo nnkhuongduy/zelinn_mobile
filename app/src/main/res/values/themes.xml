@@ -21,4 +21,10 @@
         <item name="materialButtonStyle">@style/Theme.Zelinn.Button</item>
         <item name="textInputStyle">@style/Theme.Zelinn.TextInput</item>
     </style>
+    <style name="Theme.Zelinn.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Zelinn.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Zelinn.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

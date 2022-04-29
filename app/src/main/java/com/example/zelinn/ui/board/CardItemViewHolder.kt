@@ -1,11 +1,15 @@
 package com.example.zelinn.ui.board
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.zelinn.CardActivity
 import com.example.zelinn.R
 import com.example.zelinn.classes.CardModel
 import java.text.SimpleDateFormat
@@ -18,6 +22,7 @@ class CardItemViewHolder(itemView: View, private val activity: AppCompatActivity
         val titleView = itemView.findViewById<TextView>(R.id.card_item_title)
         val dueView = itemView.findViewById<TextView>(R.id.card_item_due)
         val assignmentView = itemView.findViewById<ImageView>(R.id.card_item_assignment)
+        val layoutView = itemView.findViewById<LinearLayout>(R.id.card_item_layout)
 
         if (card.thumbnail.isNullOrEmpty()) {
             thumbnailView.visibility = View.GONE
@@ -28,6 +33,11 @@ class CardItemViewHolder(itemView: View, private val activity: AppCompatActivity
         titleView.text = card.name
         dueView.text = SimpleDateFormat("'Ngày' d 'tháng' M").format(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ENGLISH).parse(card.due))
         Glide.with(itemView).load("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/VAN_CAT.png/1024px-VAN_CAT.png").into(assignmentView)
+
+        layoutView.setOnClickListener {
+            val intent = Intent(activity, CardActivity::class.java)
+            activity.startActivity(intent)
+        }
     }
 
 }

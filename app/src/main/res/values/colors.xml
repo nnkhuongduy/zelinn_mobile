@@ -12,4 +12,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="permission_public">#2F80ED</color>
     <color name="permission_private">#9B51E0</color>
+    <color name="danger">#EB5757</color>
 </resources>

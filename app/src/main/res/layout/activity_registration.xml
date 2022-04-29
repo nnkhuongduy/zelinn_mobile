@@ -115,6 +115,7 @@
                 android:id="@+id/registration_phone_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:paddingTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,7 +144,7 @@
                 android:id="@+id/registration_birth_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date"
+                android:inputType="none"
                 android:paddingTop="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,4 +160,5 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>
