@@ -1,24 +1,36 @@
 package com.example.zelinn
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.zelinn.classes.BoardModel
+import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.ActivityHomeBinding
 import com.example.zelinn.ui.home.HomeBoardListFragment
 import com.example.zelinn.ui.home.HomeFragment
+import com.example.zelinn.ui.home.HomeViewModel
 import com.example.zelinn.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var navController: NavController
+    private val model: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,36 +38,15 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: NavigationBarView = binding.navView
+        val navView = binding.bottomNavMenu
 
-        navController = findNavController(R.id.nav_host_fragment_activity_home)
-        navView.setupWithNavController(navController)
-        navView.setOnItemSelectedListener(menuNavigationItemSelectedListener)
-
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-        val boardList = HomeBoardListFragment()
-
-        transaction.replace(R.id.homepage_content_fragment, boardList)
-        transaction.commit()
-    }
-
-    override fun onBackPressed() {
-        if (onBackPressedDispatcher.hasEnabledCallbacks()) {
-            onBackPressedDispatcher.onBackPressed()
-        } else if (navController.popBackStack().not()) {
-            finish()
+        navController = (supportFragmentManager.findFragmentById(R.id.home_activity_view) as NavHostFragment).navController
+        model.boardsFlag.observe(this) {
+            if (it) getBoards()
         }
-    }
 
-    fun setBottomNavVisibility(visibility: Int) {
-        binding.navView.visibility = visibility
-    }
-
-    private val menuNavigationItemSelectedListener =
-        NavigationBarView.OnItemSelectedListener { item ->
-            val fragment: Fragment
-            when (item.itemId) {
+        navView.addBubbleListener {id ->
+            when (id) {
                 R.id.navigation_dashboard -> {
                     navController.navigate(R.id.navigation_home)
                 }
@@ -63,6 +54,37 @@ class HomeActivity : AppCompatActivity() {
                     navController.navigate(R.id.navigation_profile)
                 }
             }
-            false
         }
+    }
+
+    override fun onBackPressed() {
+        if (onBackPressedDispatcher.hasEnabledCallbacks()) {
+            onBackPressedDispatcher.onBackPressed()
+            return
+        }
+        if (navController.popBackStack().not()) {
+            finish()
+        }
+    }
+
+    fun setBottomNavVisibility(visibility: Int) {
+        binding.bottomNavMenu.visibility = visibility
+    }
+
+    private fun getBoards() {
+        RetrofitInstance.retrofit.getBoards().enqueue(object: Callback<List<BoardModel>> {
+            override fun onResponse(
+                call: Call<List<BoardModel>>,
+                response: Response<List<BoardModel>>
+            ) {
+                val boards = response.body()
+                if (response.isSuccessful && boards != null) {
+                    model.setBoards(boards)
+                    model.setBoardsFlag(false)
+                }
+            }
+
+            override fun onFailure(call: Call<List<BoardModel>>, t: Throwable) {}
+        })
+    }
 }

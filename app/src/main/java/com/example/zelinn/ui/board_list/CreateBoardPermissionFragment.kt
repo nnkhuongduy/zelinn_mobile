@@ -8,20 +8,21 @@ import android.widget.Button
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.zelinn.R
 import com.example.zelinn.databinding.FragmentCreateBoardPermissionBinding
+import com.example.zelinn.ui.board.BoardViewModel
+import com.example.zelinn.ui.home.HomeViewModel
 import com.google.android.material.card.MaterialCardView
 
 class CreateBoardPermissionFragment: Fragment() {
-    companion object {
-        fun newInstance() = CreateBoardPermissionFragment()
-    }
-
     private var _binding: FragmentCreateBoardPermissionBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val homeViewModel: HomeViewModel by activityViewModels()
+    private val boardViewModel: BoardViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +34,35 @@ class CreateBoardPermissionFragment: Fragment() {
         val publicView = root.findViewById<MaterialCardView>(R.id.create_board_permission_public_view)
         val privateView = root.findViewById<MaterialCardView>(R.id.create_board_permission_private_view)
 
-        selectPermission(R.id.create_board_permission_public_view)
-
         closeBtn.setOnClickListener {
             requireActivity().onBackPressed()
         }
         publicView.setOnClickListener {
-            selectPermission(R.id.create_board_permission_public_view)
-            unselectPermission(R.id.create_board_permission_private_view)
+            homeViewModel.setBoardPermission(getString(R.string.board_public_value))
+            boardViewModel.setUpdatePermission(getString(R.string.board_public_value))
         }
         privateView.setOnClickListener {
-            selectPermission(R.id.create_board_permission_private_view)
-            unselectPermission(R.id.create_board_permission_public_view)
+            homeViewModel.setBoardPermission(getString(R.string.board_private_value))
+            boardViewModel.setUpdatePermission(getString(R.string.board_private_value))
+        }
+
+        homeViewModel.boardPermission.observe(viewLifecycleOwner) {
+            if (it == getString(R.string.board_public_value)) {
+                selectPermission(R.id.create_board_permission_public_view)
+                unselectPermission(R.id.create_board_permission_private_view)
+            } else {
+                selectPermission(R.id.create_board_permission_private_view)
+                unselectPermission(R.id.create_board_permission_public_view)
+            }
+        }
+        boardViewModel.updateBoard.observe(viewLifecycleOwner) {
+            if (it.permission == getString(R.string.board_public_value)) {
+                selectPermission(R.id.create_board_permission_public_view)
+                unselectPermission(R.id.create_board_permission_private_view)
+            } else {
+                selectPermission(R.id.create_board_permission_private_view)
+                unselectPermission(R.id.create_board_permission_public_view)
+            }
         }
 
         return root
@@ -55,34 +73,14 @@ class CreateBoardPermissionFragment: Fragment() {
         _binding = null
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val permissionBtn = activity?.findViewById<Button>(R.id.create_board_permission_btn)
-
-        permissionBtn?.setOnClickListener {
-            val permissionFragment = CreateBoardPermissionFragment.newInstance()
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.setCustomAnimations(
-                    R.anim.slide_in_bottom,
-                    R.anim.slide_out_bottom,
-                    R.anim.slide_in_bottom,
-                    R.anim.slide_out_bottom
-                )
-                ?.replace(R.id.board_list_create_board_fragment, permissionFragment, "CREATE_BOARD_PERMISSION")
-                ?.addToBackStack("CREATE_BOARD_PERMISSION")
-                ?.commit()
-        }
-    }
-
-    fun selectPermission(id: Int) {
+    private fun selectPermission(id: Int) {
         val permissionView = binding.root.findViewById<MaterialCardView>(id)
 
         permissionView.setCardBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.background))
         permissionView.strokeColor = ContextCompat.getColor(binding.root.context, R.color.primary)
     }
 
-    fun unselectPermission(id: Int) {
+    private fun unselectPermission(id: Int) {
         val permissionView = binding.root.findViewById<MaterialCardView>(id)
 
         permissionView.setCardBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.background_surface))

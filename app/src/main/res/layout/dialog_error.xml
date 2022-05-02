@@ -38,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_space"
-        android:layout_marginBottom="@dimen/half_space"
         android:text="Title"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -50,8 +49,10 @@
         android:id="@+id/dialog_error_subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_space"
         android:text="subtitle"
         android:textAlignment="center"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
 </LinearLayout>

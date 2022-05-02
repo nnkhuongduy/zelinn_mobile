@@ -24,11 +24,11 @@ class BoardAdapter() : ListAdapter<BoardModel, BoardAdapter.BoardViewHolder>(Boa
             val layoutView = itemView.findViewById<LinearLayout>(R.id.home_board_item_layout_view)
 
             title.text = board.name
-            Glide.with(itemView).load(board.image).into(imageView)
+            Glide.with(itemView).load(board.thumbnail).into(imageView)
 
             layoutView.setOnClickListener {
                 val bundle = bundleOf("board" to board)
-                Navigation.findNavController(itemView).navigate(R.id.boardActivity, bundle)
+                Navigation.findNavController(imageView).navigate(R.id.boardActivity, bundle)
             }
         }
     }

@@ -24,11 +24,10 @@
 
         <Button
             android:id="@+id/homepage_board_list_all_btn"
-            style="@android:style/Widget.Material.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:backgroundTint="@android:color/transparent"
+            android:backgroundTint="@color/background"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:paddingTop="0dp"

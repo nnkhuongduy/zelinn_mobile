@@ -8,9 +8,11 @@
     android:orientation="vertical"
     tools:context=".ui.board_list.BoardListFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/constraintLayout8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="@dimen/main_space"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,9 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/board_list_back_btn"
@@ -56,6 +56,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
+                android:minHeight="0dp"
                 android:paddingLeft="@dimen/half_space"
                 android:paddingTop="@dimen/half_space"
                 android:paddingRight="@dimen/half_space"
@@ -70,21 +71,17 @@
             android:layout_height="wrap_content"
             android:text="@string/all_boards_subtitle"
             android:textColor="@color/background_light"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout4" />
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/board_list_rv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView12"
             tools:listitem="@layout/fragment_home_board_item">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/board_list_backdrop"
@@ -103,7 +100,9 @@
         android:id="@+id/board_list_create_board_fragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="@dimen/main_space"
+        android:layout_marginTop="@dimen/double_space"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

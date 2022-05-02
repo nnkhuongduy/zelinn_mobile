@@ -10,7 +10,7 @@ data class UserModel(
     @SerializedName("email") @Expose var email: String,
     @SerializedName("name") @Expose var name: String,
     @SerializedName("phone") @Expose var phone: String,
-    @SerializedName("birth") @Expose var birth: Date?,
+    @SerializedName("avatar") @Expose var avatar: String,
 ): Serializable {
     override fun toString(): String = "$id; $email; $name; $phone"
 }

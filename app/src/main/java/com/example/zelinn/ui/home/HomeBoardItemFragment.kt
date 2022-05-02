@@ -27,7 +27,7 @@ class HomeBoardItemFragment: Fragment() {
             arguments = Bundle().apply {
                 val fragment = HomeBoardItemFragment()
                 val args = Bundle()
-                args.putString("image", board.image)
+                args.putString("image", board.thumbnail)
                 args.putString("name", board.name)
                 fragment.arguments = args
                 return fragment

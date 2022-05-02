@@ -10,7 +10,10 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zelinn.HomeActivity
@@ -18,6 +21,8 @@ import com.example.zelinn.R
 import com.example.zelinn.adapters.BoardAdapter
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.databinding.FragmentBoardListBinding
+import com.example.zelinn.ui.home.HomeViewModel
+import io.ak1.BubbleTabBar
 
 class BoardListFragment : Fragment() {
     private lateinit var backdrop: FrameLayout
@@ -27,6 +32,7 @@ class BoardListFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val model: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,16 +50,31 @@ class BoardListFragment : Fragment() {
             }
         }
 
+        requireActivity().findViewById<BubbleTabBar>(R.id.bottom_nav_menu).setSelectedWithId(R.id.navigation_dashboard, false)
+
         backBtn.setOnClickListener {
-            Navigation.findNavController(root).popBackStack()
+            findNavController(this).popBackStack()
         }
         createBtn.setOnClickListener {
             createBoardCreateFragment()
         }
 
-        fetchBoards()
-
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val rv = binding.root.findViewById<RecyclerView>(R.id.board_list_rv)
+        val adapter = BoardAdapter()
+
+        rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.adapter = adapter
+
+        model.boards.observe(viewLifecycleOwner) {
+            adapter.apply {
+                submitList(it)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -62,12 +83,13 @@ class BoardListFragment : Fragment() {
     }
 
     private fun createBoardCreateFragment() {
-        val createBoardF = CreateBoardFragment.newInstance()
+        val createBoardF = CreateBoardFragment()
         val activity = requireActivity() as HomeActivity
 
         backdrop.visibility = View.VISIBLE
         activity.setBottomNavVisibility(View.INVISIBLE)
         activity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
+        model.setBoard(null, "", getString(R.string.board_public_value))
 
         activity.supportFragmentManager.beginTransaction()
             .setCustomAnimations(
@@ -84,67 +106,12 @@ class BoardListFragment : Fragment() {
     private fun closeBoardCreateFragment() {
         val activity = requireActivity() as HomeActivity
 
-        activity.supportFragmentManager.popBackStack()
+        activity.supportFragmentManager.popBackStack("CREATE_BOARD", FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         if (activity.supportFragmentManager.backStackEntryCount == 1) {
-            backdrop.visibility = View.INVISIBLE
+            backdrop.visibility = View.GONE
             backPressedCallback.remove()
             activity.setBottomNavVisibility(View.VISIBLE)
-        }
-    }
-
-    private fun fetchBoards() {
-//        RetrofitInstance.retrofit.getBoards().enqueue(object: Callback<List<BoardModel>> {
-//            override fun onResponse(
-//                call: Call<List<BoardModel>>,
-//                response: Response<List<BoardModel>>
-//            ) {
-//                val boards = response.body()
-//
-//                boards?.let {
-//                    for (board in boards) {
-//                        val item = HomeBoardItemFragment.newInstance(board)
-//
-//                        supportFragmentManager.beginTransaction().add(R.id.homepage_board_list_item_layout, item, board.id).commit()
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<BoardModel>>, t: Throwable) {
-//
-//            }
-//        })
-
-        val rv = binding.root.findViewById<RecyclerView>(R.id.board_list_rv)
-
-        val board1 = BoardModel(
-            "1",
-            "Design Plan",
-            "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"
-        )
-        val board2 = BoardModel(
-            "2",
-            "Dev Plan",
-            "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"
-        )
-        val board3 = BoardModel(
-            "3",
-            "Marketing",
-            "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"
-        )
-        val board4 = BoardModel(
-            "4",
-            "Finan Plan",
-            "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"
-        )
-        val boards = listOf<BoardModel>(board1, board2, board3, board4)
-        val adapter = BoardAdapter()
-
-        rv.layoutManager = LinearLayoutManager(binding.root.context)
-        rv.adapter = adapter
-
-        adapter.apply {
-            submitList(boards)
         }
     }
 }

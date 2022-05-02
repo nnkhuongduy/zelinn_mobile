@@ -7,7 +7,8 @@ import java.io.Serializable
 data class BoardModel(
     @SerializedName("_id") @Expose var id: String,
     @SerializedName("name") @Expose var name: String,
-    @SerializedName("image") @Expose var image: String,
+    @SerializedName("thumbnail") @Expose var thumbnail: String,
+    @SerializedName("permission") @Expose var permission: String,
 ): Serializable {
-    override fun toString(): String = "$id; $name; $image"
+    override fun toString(): String = "$id; $name; $thumbnail; $permission"
 }

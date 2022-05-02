@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sub_space"
         android:layout_marginBottom="@dimen/sub_space"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/homepage_list_boards_btn"

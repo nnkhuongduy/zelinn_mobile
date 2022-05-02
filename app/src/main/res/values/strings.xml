@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Zelinn</string>
     <string name="preference_current_user">com.example.zelinn.CURRENT_USER</string>
+    <string name="preference_jwt">com.example.zelinn.JWT</string>
 
     <!--  Common  -->
     <string name="common_continue">Tiếp tục</string>
@@ -12,6 +13,12 @@
     <string name="close">Đóng</string>
     <string name="back">Trở lại</string>
     <string name="logout">Đăng xuất</string>
+    <string name="common_save">Lưu</string>
+    <string name="common_share">Chia sẻ</string>
+    <string name="common_invite">Mời tham gia</string>
+    <string name="common_config">Thiết lập</string>
+    <string name="common_to_detail">Xem chi tiết</string>
+    <string name="common_archive">Lưu trữ</string>
 
     <!--  Splash  -->
     <string name="splash_title_1">Quản lý nhiều việc hơn với Zelinn</string>
@@ -25,7 +32,7 @@
     <string name="login_subtitle">Chúng tôi sẽ gửi email chứa đường link có thể giúp bạn đăng nhập ngay lập tức</string>
     <string name="login_mail_fail_dialog_title">Đã xảy ra lỗi trong quá trình gửi mã xác thực</string>
     <string name="login_mail_fail_dialog_subtitle">Vui lòng thử đăng nhập lại sau</string>
-    <string name="login_mail_success_dialog_title">Đã gửi mail chứ mã xác thực</string>
+    <string name="login_mail_success_dialog_title">Đã gửi mail chứa mã xác thực</string>
     <string name="login_mail_dialog_action">Điền mã xác thực</string>
     <string name="login_verification_title">Xác thực tài khoản</string>
     <string name="login_verification_subtitle">Nhập mã kích hoạt gồm 6 số được gửi trong mail của bạn</string>
@@ -35,11 +42,17 @@
     <string name="registration_phone">Số điện thoại</string>
     <string name="registration_birth">Ngày sinh</string>
     <string name="registration_success">Đăng ký thành công</string>
+    <string name="registration_failed">Đã xảy ra lỗi trong quá trình đăng ký</string>
+    <string name="registration_existed">Số điện thoại này đã được đăng ký</string>
     <string name="login_success">Đăng nhập thành công</string>
+    <string name="login_failed">Đã xảy ra lỗi trong quá trình đăng nhập</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="verification_expired">Mã xác thực đã hết hạn!</string>
+    <string name="verification_incorrect">Mã xác thực không chính xác!</string>
+    <string name="verification_failed">Đã xảy ra lỗi trong quá trình xác thực!</string>
 
     <!--  Homepage  -->
     <string name="homepage_title">Trang chủ</string>
@@ -51,6 +64,10 @@
 
     <!--  Card  -->
     <string name="card_description">Mô tả</string>
+
+    <!--  Board  -->
+    <string name="board_public_value">PUBLIC</string>
+    <string name="board_private_value">PRIVATE</string>
 
     <!--  All Boards  -->
     <string name="all_boards_title">Tất cả bảng</string>
@@ -64,6 +81,7 @@
     <string name="create_board_permission_public">Đây là trang công khai. Bất kì ai có liên kết tới bảng này đều có thể thấy được và bảng cũng sẽ hiển thị trên công cụ tìm kiếm như Google. Chỉ có người được mời vào trong bảng mới có thể chỉnh sửa bảng được</string>
     <string name="create_board_permission_private">Bảng này hiển thị với các thành viên của Không gian làm việc. Chỉ những người được thêm vào bảng mới có thể chỉnh sửa bảng được</string>
     <string name="create_board_success">Tạo bảng thành công</string>
+    <string name="create_board_fail">Đã xảy ra lỗi trong quá trình tạo bảng</string>
 
     <!--  Board Activity  -->
     <string name="board_create_list">Tạo danh sách</string>
@@ -87,8 +105,16 @@
     <string name="profile_help_action">Trợ giúp</string>
     <string name="profile_contact_action">Liên hệ hỗ trợ</string>
     <string name="profile_term_action">Chính sách và điều khoản</string>
+    <string name="profile_edit_failed">Đã xảy ra lỗi trong quá trình cập nhật thông tin</string>
+    <string name="profile_edit_success">Cập nhật thông tin thành công</string>
 
     <!--  Select Members  -->
     <string name="select_member_title">Thành viên</string>
     <string name="select_member_action">Thêm thành viên</string>
+
+    <!--  Board Menu  -->
+    <string name="board_menu_title">Menu Bảng</string>
+    <string name="board_menu_star">Ưu tiên</string>
+    <string name="board_menu_info">Thông tin về bảng</string>
+    <string name="board_menu_config_title">Thiết lập bảng</string>
 </resources>

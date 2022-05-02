@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -18,11 +18,12 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_navigation_home_to_boardActivity"
-            app:destination="@id/boardActivity" />
-        <action
             android:id="@+id/action_navigation_home_to_profileFragment"
-            app:destination="@id/navigation_profile" />
+            app:destination="@id/navigation_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -40,27 +41,32 @@
         android:id="@+id/boardListFragment"
         android:name="com.example.zelinn.ui.board_list.BoardListFragment"
         android:label="fragment_board_list"
-        tools:layout="@layout/fragment_board_list" >
-        <action
-            android:id="@+id/action_boardListFragment_to_boardActivity"
-            app:destination="@id/boardActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/boardActivity"
-        android:name="com.example.zelinn.BoardActivity"
-        android:label="activity_board"
-        tools:layout="@layout/activity_board" />
+        tools:layout="@layout/fragment_board_list" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.zelinn.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_navigation_profile_to_profileEditFragment"
+            app:destination="@id/profileEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <activity
         android:id="@+id/navigation_card"
         android:name="com.example.zelinn.CardActivity"
         android:label="CardActivity" />
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.example.zelinn.ui.profile.ProfileEditFragment"
+        android:label="ProfileEditFragment"
+        tools:layout="@layout/fragment_profile_edit" />
+    <activity
+        android:id="@+id/boardActivity"
+        android:name="com.example.zelinn.BoardActivity"
+        android:label="activity_board"
+        tools:layout="@layout/activity_board" />
 </navigation>
