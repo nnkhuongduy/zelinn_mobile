@@ -9,8 +9,12 @@ import java.util.*
 data class CardModel(
     @SerializedName("_id") @Expose var id: String,
     @SerializedName("name") @Expose var name: String,
-    @SerializedName("due") @Expose var due: String,
-    @SerializedName("thumbnail") @Expose @Nullable var thumbnail: String?,
+    @SerializedName("description") @Expose var description: String,
+    @SerializedName("start") @Expose var start: Date?,
+    @SerializedName("due") @Expose var due: Date?,
+    @SerializedName("thumbnail") @Expose var thumbnail: String?,
+    @SerializedName("participants") @Expose var participants: List<MemberModel>,
+    @SerializedName("createdAt") @Expose var createdAt: Date,
 ) : Serializable {
-    override fun toString(): String = "$id; $name; ${due.toString()}; $thumbnail;"
+    override fun toString(): String = "$id; $name; $description; ${start.toString()}; ${due.toString()}; $thumbnail;"
 }

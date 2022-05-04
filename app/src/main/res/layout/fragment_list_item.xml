@@ -11,14 +11,12 @@
     <LinearLayout
         android:id="@+id/list_item_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_height="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/list_sort_btn"
+            android:id="@+id/list_item_sort_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -31,6 +29,7 @@
             android:id="@+id/list_name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="Đang thực hiện (3)"
             android:textColor="@color/background_light"
@@ -45,40 +44,113 @@
             android:padding="5dp"
             android:src="@drawable/ic_more_horiz"
             app:tint="@color/background_light" />
+
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/list_item_add_card_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/image_button_shape"
-        android:backgroundTint="@color/background_surface"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:paddingTop="@dimen/half_space"
-        android:paddingBottom="@dimen/half_space"
-        android:src="@drawable/ic_add"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/list_item_layout">
 
-    <Button
-        android:id="@+id/list_item_create_btn"
-        android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/list_item_add_card_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_button_shape"
+            android:backgroundTint="@color/background_surface"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:paddingTop="@dimen/half_space"
+            android:paddingBottom="@dimen/half_space"
+            android:src="@drawable/ic_add" />
+
+        <Button
+            android:id="@+id/list_item_create_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_surface"
+            android:text="@string/board_create_list"
+            android:visibility="gone" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/list_item_swipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_space">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_item_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_space" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/list_item_sort_menu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/background_surface"
-        android:text="@string/board_create_list"
+        android:elevation="10dp"
         android:visibility="gone"
-        app:icon="@drawable/ic_add"
-        app:iconGravity="textStart"
-        app:layout_constraintBottom_toBottomOf="@+id/list_item_add_card_btn"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@color/background_surface"
+        app:cardCornerRadius="15dp"
+        app:contentPadding="@dimen/half_space"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/list_item_layout">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_item_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/half_space"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item_add_card_btn" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/list_item_sort_created"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:drawableEnd="@drawable/ic_arrow_upward"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="@dimen/half_space"
+                android:paddingBottom="@dimen/half_space"
+                android:text="@string/list_sort_create"
+                android:textSize="12sp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/list_item_sort_due"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_space"
+                android:layout_marginBottom="@dimen/half_space"
+                android:backgroundTint="@color/background_light"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="@dimen/half_space"
+                android:paddingBottom="@dimen/half_space"
+                android:text="@string/list_sort_due"
+                android:textSize="12sp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/list_item_sort_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background_light"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="@dimen/half_space"
+                android:paddingBottom="@dimen/half_space"
+                android:text="@string/list_sort_name"
+                android:textSize="12sp"
+                app:iconPadding="0dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun populate() {
-        val user = Hawk.get<UserModel>("user")
+        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
 
         if (user.avatar.isNullOrBlank())
             imageView.setImageResource(R.drawable.ic_person)
@@ -80,8 +80,8 @@ class ProfileFragment: Fragment() {
     }
 
     private fun logout() {
-        Hawk.delete("jwt")
-        Hawk.delete("user")
+        Hawk.delete(getString(R.string.preference_jwt))
+        Hawk.delete(getString(R.string.preference_current_user))
 
         val activity = requireActivity()
         val intent = Intent(activity, AuthActivity::class.java)

@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.zelinn.HomeActivity
 import com.example.zelinn.R
 import com.example.zelinn.adapters.BoardAdapter
@@ -26,6 +27,7 @@ import io.ak1.BubbleTabBar
 
 class BoardListFragment : Fragment() {
     private lateinit var backdrop: FrameLayout
+    private lateinit var swipeLayout: SwipeRefreshLayout
     private lateinit var backPressedCallback: OnBackPressedCallback
 
     private var _binding: FragmentBoardListBinding? = null
@@ -44,10 +46,14 @@ class BoardListFragment : Fragment() {
         val backBtn = root.findViewById<TextView>(R.id.board_list_back_btn)
         val createBtn = root.findViewById<Button>(R.id.board_list_create_btn)
         backdrop = root.findViewById(R.id.board_list_backdrop)
+        swipeLayout = root.findViewById(R.id.board_list_swipe)
         backPressedCallback = object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 closeBoardCreateFragment()
             }
+        }
+        swipeLayout.setOnRefreshListener {
+            (requireActivity() as HomeActivity).getBoards(swipeLayout)
         }
 
         requireActivity().findViewById<BubbleTabBar>(R.id.bottom_nav_menu).setSelectedWithId(R.id.navigation_dashboard, false)
@@ -87,7 +93,6 @@ class BoardListFragment : Fragment() {
         val activity = requireActivity() as HomeActivity
 
         backdrop.visibility = View.VISIBLE
-        activity.setBottomNavVisibility(View.INVISIBLE)
         activity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         model.setBoard(null, "", getString(R.string.board_public_value))
 
@@ -108,10 +113,9 @@ class BoardListFragment : Fragment() {
 
         activity.supportFragmentManager.popBackStack("CREATE_BOARD", FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
-        if (activity.supportFragmentManager.backStackEntryCount == 1) {
+        if (activity.supportFragmentManager.backStackEntryCount <= 1) {
             backdrop.visibility = View.GONE
             backPressedCallback.remove()
-            activity.setBottomNavVisibility(View.VISIBLE)
         }
     }
 }

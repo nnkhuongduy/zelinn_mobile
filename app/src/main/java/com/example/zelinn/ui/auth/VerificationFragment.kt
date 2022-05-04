@@ -126,7 +126,7 @@ class VerificationFragment: Fragment() {
                 val body = response.body()
 
                 if (response.isSuccessful && body != null) {
-                    Hawk.put("user", body)
+                    Hawk.put(getString(R.string.preference_current_user), body)
                     toHomepage()
                 }
 
@@ -149,7 +149,7 @@ class VerificationFragment: Fragment() {
                 val body = response.body()
 
                 if (response.isSuccessful && body != null) {
-                    Hawk.put("jwt", body.token)
+                    Hawk.put(getString(R.string.preference_jwt), body.token)
                     getAuth()
                     return
                 }

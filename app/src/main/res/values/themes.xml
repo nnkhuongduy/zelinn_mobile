@@ -20,6 +20,7 @@
         <item name="materialAlertDialogTheme">@style/Theme.Zelinn.AlertDialog</item>
         <item name="materialButtonStyle">@style/Theme.Zelinn.Button</item>
         <item name="textInputStyle">@style/Theme.Zelinn.TextInput</item>
+        <item name="colorControlHighlight">#40ffffff</item>
     </style>
     <style name="Theme.Zelinn.NoActionBar">
         <item name="windowActionBar">false</item>

@@ -7,6 +7,7 @@ import java.io.Serializable
 data class ListModel(
     @SerializedName("_id") @Expose var id: String,
     @SerializedName("name") @Expose var name: String,
+    @SerializedName("position") @Expose var position: Int?,
 ) : Serializable {
-    override fun toString(): String = "$id; $name;"
+    override fun toString(): String = "$id; $name; $position;"
 }

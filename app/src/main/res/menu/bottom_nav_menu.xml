@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_dashboard"
         android:actionLayout="@layout/fragment_home"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Dashboard"
         android:checked="true"
-        android:color="@color/primary" />
+        android:color="@color/primary"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/common_dashboard" />
+    <item
+        android:id="@+id/navigation_notification"
+        android:actionLayout="@layout/fragment_notification"
+        android:color="@color/primary"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/common_notification"
+        app:showAsAction="never" />
     <item
         android:id="@+id/navigation_profile"
         android:actionLayout="@layout/fragment_profile"
+        android:color="@color/primary"
         android:icon="@drawable/ic_person"
-        android:title="Profile"
-        android:color="@color/primary" />
+        android:title="@string/common_profile" />
 </menu>

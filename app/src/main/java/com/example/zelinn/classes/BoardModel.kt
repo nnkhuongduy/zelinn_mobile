@@ -9,6 +9,10 @@ data class BoardModel(
     @SerializedName("name") @Expose var name: String,
     @SerializedName("thumbnail") @Expose var thumbnail: String,
     @SerializedName("permission") @Expose var permission: String,
+    @SerializedName("description") @Expose var description: String,
+    @SerializedName("owner") @Expose var owner: UserModel,
+    @SerializedName("members") @Expose var members: List<MemberModel>,
+    @SerializedName("pending") @Expose var pending: List<MemberModel>,
 ): Serializable {
-    override fun toString(): String = "$id; $name; $thumbnail; $permission"
+    override fun toString(): String = "$id; $name; $thumbnail; $permission; $description; ${owner.id}; ${members.toString()}; ${pending.toString()};"
 }

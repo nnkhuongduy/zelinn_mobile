@@ -98,7 +98,7 @@ class ProfileEditFragment : Fragment() {
     }
 
     private fun populate() {
-        val user = Hawk.get<UserModel>("user")
+        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
 
         if (!user.avatar.isNullOrEmpty())
             Glide
@@ -184,7 +184,7 @@ class ProfileEditFragment : Fragment() {
                 val user = response.body()
 
                 if (response.isSuccessful && user != null) {
-                    Hawk.put("user", user)
+                    Hawk.put(getString(R.string.preference_current_user), user)
                     showSuccessDialog()
                 } else showErrorDialog(response.code())
             }
@@ -211,7 +211,7 @@ class ProfileEditFragment : Fragment() {
                     if (imageUri != null)
                         postUploadAvatar()
                     else {
-                        Hawk.put("user", user)
+                        Hawk.put(getString(R.string.preference_current_user), user)
                         showSuccessDialog()
                     }
                 } else showErrorDialog(response.code())

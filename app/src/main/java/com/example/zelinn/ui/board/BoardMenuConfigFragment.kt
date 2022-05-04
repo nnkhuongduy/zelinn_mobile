@@ -24,7 +24,9 @@ import com.example.zelinn.databinding.FragmentBoardConfigBinding
 import com.example.zelinn.interfaces.PostUpdateBoardBody
 import com.example.zelinn.interfaces.UploadBoardThumbnailResponse
 import com.example.zelinn.ui.board_list.CreateBoardPermissionFragment
+import com.example.zelinn.ui.home.HomeViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.orhanobut.hawk.Hawk
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -155,7 +157,7 @@ class BoardMenuConfigFragment: Fragment() {
 
         val titleView = dialog.findViewById<TextView>(R.id.dialog_success_title)
 
-        titleView?.text = getString(R.string.create_board_success)
+        titleView?.text = getString(R.string.board_menu_update_success)
         enable()
 
         dialog.setOnDismissListener {
@@ -170,7 +172,7 @@ class BoardMenuConfigFragment: Fragment() {
         val title = dialog.findViewById<TextView>(R.id.dialog_error_title)!!
         enable()
 
-        title.text = getString(R.string.profile_edit_failed)
+        title.text = getString(R.string.board_menu_update_failed)
     }
 
     private fun uploadThumbnail() {
@@ -210,19 +212,20 @@ class BoardMenuConfigFragment: Fragment() {
 
     private fun postUpdateBoard(thumbnail: String) {
         val updateBoard = model.updateBoard.value!!
-        val body = PostUpdateBoardBody(model.board.value!!.id, updateBoard.name, thumbnail, updateBoard.permission)
+        val body = PostUpdateBoardBody(model.board.value!!.id, updateBoard.name, thumbnail, updateBoard.permission, updateBoard.owner.id, updateBoard.description)
 
-        RetrofitInstance.retrofit.postUpdateBoard(body).enqueue(object: Callback<BoardModel> {
-            override fun onResponse(call: Call<BoardModel>, response: Response<BoardModel>) {
-                val board = response.body()
-
-                if (response.isSuccessful && board != null) {
+        RetrofitInstance.retrofit.postUpdateBoard(body).enqueue(object: Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
                     showSuccessDialog()
-                    model.setBoard(board)
+                    model.resetBoard()
+                    Hawk.put(getString(R.string.preference_board_flag), true)
+                } else {
+                    showErrorDialog()
                 }
             }
 
-            override fun onFailure(call: Call<BoardModel>, t: Throwable) {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
                 showErrorDialog()
             }
         })

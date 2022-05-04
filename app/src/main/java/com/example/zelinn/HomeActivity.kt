@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.ActivityHomeBinding
@@ -21,6 +22,7 @@ import com.example.zelinn.ui.home.HomeViewModel
 import com.example.zelinn.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.orhanobut.hawk.Hawk
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,10 +44,10 @@ class HomeActivity : AppCompatActivity() {
 
         navController = (supportFragmentManager.findFragmentById(R.id.home_activity_view) as NavHostFragment).navController
         model.boardsFlag.observe(this) {
-            if (it) getBoards()
+            if (it) getBoards(null)
         }
 
-        navView.addBubbleListener {id ->
+        navView.addBubbleListener() {id ->
             when (id) {
                 R.id.navigation_dashboard -> {
                     navController.navigate(R.id.navigation_home)
@@ -53,7 +55,18 @@ class HomeActivity : AppCompatActivity() {
                 R.id.navigation_profile -> {
                     navController.navigate(R.id.navigation_profile)
                 }
+                R.id.navigation_notification -> {
+                    navController.navigate(R.id.navigation_notification)
+                }
             }
+        }
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+
+        if (Hawk.get<Boolean>(getString(R.string.preference_board_flag)) == true) {
+            getBoards(null)
         }
     }
 
@@ -67,11 +80,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun setBottomNavVisibility(visibility: Int) {
-        binding.bottomNavMenu.visibility = visibility
+    override fun onResume() {
+        super.onResume()
+
+        if (Hawk.get<Boolean>(getString(R.string.preference_board_flag)) == true) {
+            getBoards(null)
+        }
     }
 
-    private fun getBoards() {
+    fun getBoards(layout: SwipeRefreshLayout?) {
         RetrofitInstance.retrofit.getBoards().enqueue(object: Callback<List<BoardModel>> {
             override fun onResponse(
                 call: Call<List<BoardModel>>,
@@ -81,6 +98,9 @@ class HomeActivity : AppCompatActivity() {
                 if (response.isSuccessful && boards != null) {
                     model.setBoards(boards)
                     model.setBoardsFlag(false)
+                    Hawk.put(getString(R.string.preference_board_flag), false)
+
+                    if (layout != null) layout.isRefreshing = false
                 }
             }
 

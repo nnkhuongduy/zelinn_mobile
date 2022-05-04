@@ -2,6 +2,8 @@
     <string name="app_name">Zelinn</string>
     <string name="preference_current_user">com.example.zelinn.CURRENT_USER</string>
     <string name="preference_jwt">com.example.zelinn.JWT</string>
+    <string name="preference_user_flag">com.example.zelinn.USER_FLAG</string>
+    <string name="preference_board_flag">com.example.zelinn.BOARD_FLAG</string>
 
     <!--  Common  -->
     <string name="common_continue">Tiếp tục</string>
@@ -9,6 +11,7 @@
     <string name="permission_private">Riêng tư</string>
     <string name="create_action">Tạo mới</string>
     <string name="members">Các thành viên</string>
+    <string name="member">Thành viên</string>
     <string name="select">Chọn</string>
     <string name="close">Đóng</string>
     <string name="back">Trở lại</string>
@@ -19,6 +22,12 @@
     <string name="common_config">Thiết lập</string>
     <string name="common_to_detail">Xem chi tiết</string>
     <string name="common_archive">Lưu trữ</string>
+    <string name="common_search">Tìm kiếm</string>
+    <string name="common_dashboard">Trang chủ</string>
+    <string name="common_profile">Hồ sơ</string>
+    <string name="common_notification">Thông báo</string>
+    <string name="common_confirm">Xác nhận</string>
+    <string name="common_cancel">Từ chối</string>
 
     <!--  Splash  -->
     <string name="splash_title_1">Quản lý nhiều việc hơn với Zelinn</string>
@@ -90,6 +99,8 @@
     <string name="create_list_title">Tạo danh sách</string>
     <string name="create_list_name">Tên danh sách</string>
     <string name="create_list_success">Tạo danh sách thành công</string>
+    <string name="create_list_position">Vị trí</string>
+    <string name="create_list_failed">Đã xảy ra lỗi trong quá trình tạo danh sách</string>
 
     <!--  Create Card  -->
     <string name="create_card_title">Tạo thẻ</string>
@@ -97,7 +108,11 @@
     <string name="create_card_success">Tạo thẻ thành công</string>
     <string name="create_card_start_date">Ngày bắt đầu</string>
     <string name="create_card_due_date">Ngày kết thúc</string>
+    <string name="create_card_start_time">Thời gian bắt đầu</string>
+    <string name="create_card_due_time">Thời gian kết thúc</string>
     <string name="create_card_unselect_date">Chưa chọn</string>
+    <string name="create_card_failed">Đã xảy ra lỗi trong quá trình tạo thẻ</string>
+    <string name="create_card_thumbnail">Ảnh đại diện</string>
 
     <!--  Profile  -->
     <string name="profile_edit_action">Chỉnh sửa thông tin</string>
@@ -117,4 +132,25 @@
     <string name="board_menu_star">Ưu tiên</string>
     <string name="board_menu_info">Thông tin về bảng</string>
     <string name="board_menu_config_title">Thiết lập bảng</string>
+    <string name="board_menu_info_owner">Chủ sở hữu</string>
+    <string name="board_menu_info_description">Mô tả</string>
+    <string name="board_menu_invite_hint">Tên hoặc email</string>
+    <string name="board_menu_update_success">Cập nhật bảng thành công</string>
+    <string name="board_menu_update_failed">Đã xảy ra lỗi trong quá trình cập nhật bảng</string>
+    <string name="board_menu_invite_success">Đã gửi lời mời tham gia thành công</string>
+    <string name="board_menu_invite_failed">Gửi lời mời tham gia thất bại</string>
+    <string name="board_menu_invite_pending">Đã gửi lời mời</string>
+    <string name="board_menu_member_list_joined">Đã tham gia</string>
+    <string name="board_menu_member_list_pending">Đang mời</string>
+    <string name="board_menu_member_list_remove">Hủy thành viên</string>
+    <string name="board_menu_member_list_remove_confirm">Bạn muốn hủy các thành viên này?</string>
+    <string name="board_menu_owner_action">Chuyển đổi sở hữu</string>
+
+    <!--  Notification  -->
+    <string name="notification_type_invite_board">BOARD_INVITATION</string>
+
+    <!--  List  -->
+    <string name="list_sort_due">Sắp xếp theo ngày hết hạn</string>
+    <string name="list_sort_create">Sắp xếp theo ngày tạo</string>
+    <string name="list_sort_name">Sắp xếp theo tên thẻ</string>
 </resources>

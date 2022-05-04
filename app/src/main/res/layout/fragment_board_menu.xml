@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -119,7 +120,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/board_menu_star_btn"
+                android:id="@+id/board_menu_star_btn_unfav"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
@@ -128,8 +129,26 @@
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
+                android:visibility="gone"
                 app:cornerRadius="15dp"
                 app:icon="@drawable/ic_star_border"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="30dp" />
+
+            <Button
+                android:id="@+id/board_menu_star_btn_fav"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/gold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:visibility="gone"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ic_star"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="30dp" />
@@ -182,6 +201,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_space"
         android:orientation="horizontal">
 
         <TextView
@@ -203,7 +223,7 @@
             android:text="@string/common_to_detail"
             android:textColor="@color/primary"
             android:textSize="14sp"
-            app:icon="@drawable/ic_keyboard_arrow_right"
+            app:icon="@drawable/ic_chevron_right"
             app:iconGravity="textEnd"
             app:iconPadding="0dp"
             app:iconTint="@color/primary" />
@@ -211,22 +231,31 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/half_space"
         app:cardBackgroundColor="@color/background_surface"
-        app:cardCornerRadius="15dp">
+        app:cardCornerRadius="15dp"
+        app:contentPadding="@dimen/half_space">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/board_menu_member_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:padding="@dimen/main_space"></LinearLayout>
+            android:scrollbars="horizontal"
+            tools:itemCount="1"
+            tools:listitem="@layout/fragment_user_avatar" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/board_menu_info_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/half_space"
+        android:clickable="true"
+        android:focusable="auto"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/background_surface"
         app:cardCornerRadius="15dp">
 
@@ -243,7 +272,7 @@
                 app:cardCornerRadius="6dp">
 
                 <ImageView
-                    android:id="@+id/imageView9"
+                    android:id="@+id/create_card_start_time_image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:padding="5dp"
@@ -262,13 +291,13 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/create_card_start_time_image_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0"
-                app:tint="@color/gray3"
-                app:srcCompat="@drawable/mdtp_ic_chevron_right_black_24dp" />
+                app:srcCompat="@drawable/ic_chevron_right"
+                app:tint="@color/gray3" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

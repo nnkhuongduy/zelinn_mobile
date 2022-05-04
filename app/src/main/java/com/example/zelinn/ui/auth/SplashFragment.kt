@@ -47,7 +47,7 @@ class SplashFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val jwt = Hawk.get<String>("jwt")
+        val jwt = Hawk.get<String>(getString(R.string.preference_jwt))
 
         if (!jwt.isNullOrEmpty()) {
             RetrofitInstance.retrofit.auth().enqueue(object: Callback<UserModel> {
@@ -55,7 +55,7 @@ class SplashFragment: Fragment() {
                     val user = response.body()
 
                     if (response.isSuccessful && user != null) {
-                        Hawk.put("user", user)
+                        Hawk.put(getString(R.string.preference_current_user), user)
 
                         val activity = requireActivity()
                         val intent = Intent(requireActivity(), HomeActivity::class.java)

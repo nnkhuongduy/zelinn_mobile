@@ -45,6 +45,7 @@
                     android:id="@+id/board_image_view"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -82,12 +83,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/board_activity_list_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:scrollbarSize="0dp"
             android:scrollbars="horizontal"
             tools:itemCount="5"
             tools:listitem="@layout/fragment_list_item" />
+
 
     </LinearLayout>
 

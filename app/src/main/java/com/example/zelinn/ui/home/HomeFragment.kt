@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         requireActivity().findViewById<BubbleTabBar>(R.id.bottom_nav_menu).setSelectedWithId(R.id.navigation_dashboard, false)
 
         val textView: TextView = binding.textView8
-        val user = Hawk.get<UserModel>("user")
+        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
         textView.text = "${getString(R.string.homepage_gretting)} ${if (user.name.length > 10) user.name.substring(0, 10) + "..." else user.name} \uD83D\uDC4B"
 
         return root
