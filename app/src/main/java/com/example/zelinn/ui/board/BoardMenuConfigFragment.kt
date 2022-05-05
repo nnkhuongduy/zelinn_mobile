@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.example.zelinn.R
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.RetrofitInstance
+import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentBoardConfigBinding
 import com.example.zelinn.interfaces.PostUpdateBoardBody
 import com.example.zelinn.interfaces.UploadBoardThumbnailResponse
@@ -43,6 +44,7 @@ class BoardMenuConfigFragment: Fragment() {
     private lateinit var progressView: ProgressBar
 
     private var _binding: FragmentBoardConfigBinding? = null
+    private var isOwner = false
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -74,6 +76,8 @@ class BoardMenuConfigFragment: Fragment() {
         archiveBtn = root.findViewById(R.id.board_menu_config_archive_btn)
         progressView = root.findViewById(R.id.board_menu_config_progress)
 
+        populate()
+
         closeBtn.setOnClickListener {
             requireActivity().onBackPressed()
         }
@@ -82,9 +86,11 @@ class BoardMenuConfigFragment: Fragment() {
         }
         permissionBtn.setOnClickListener { createPermissionFragment() }
         thumbnailView.setOnClickListener {
-            val photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
-            imageLauncher.launch(photoPickerIntent)
+            if (isOwner) {
+                val photoPickerIntent = Intent(Intent.ACTION_PICK)
+                photoPickerIntent.type = "image/*"
+                imageLauncher.launch(photoPickerIntent)
+            }
         }
         saveBtn.setOnClickListener { onUpdate() }
 
@@ -109,6 +115,16 @@ class BoardMenuConfigFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun populate() {
+        val board = model.board.value ?: return
+        isOwner = board.owner.id == Hawk.get<UserModel>(getString(R.string.preference_current_user)).id
+
+        nameText.isEnabled = isOwner
+        permissionBtn.isEnabled = isOwner
+        saveBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
+        archiveBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
     }
 
     private fun createPermissionFragment() {

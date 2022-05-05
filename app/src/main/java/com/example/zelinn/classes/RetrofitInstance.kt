@@ -15,8 +15,8 @@ class RetrofitInstance {
                 return@addInterceptor it.proceed(it.request().newBuilder().addHeader("Authorization", "Bearer ${Hawk.get<String>("com.example.zelinn.JWT")}").build())
             }
             val builder = Retrofit.Builder()
-                .baseUrl("http://192.168.1.4:3000/")
-//                .baseUrl("http://13.213.9.57/")
+//                .baseUrl("http://192.168.1.4:3000/")
+                .baseUrl("http://13.213.9.57/") 
                 .addConverterFactory(GsonConverterFactory.create())
             val retrofit = builder
                 .client(httpClient.build())
