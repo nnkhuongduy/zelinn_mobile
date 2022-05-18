@@ -16,42 +16,26 @@
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_all_boards.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_board.xml" value="0.19718309859154928" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_board_list.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_card.xml" value="0.3804347826086957" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_home.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_login.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_login_mail_dialog.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_notification.xml" value="0.3804347826086957" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_registration.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/activity_verification.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/card_fragment.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/create_board_fragment.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_board_create_success.xml" value="0.3875" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_board_invitation.xml" value="0.33" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_card_create_success.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_confirmation.xml" value="0.38269927536231885" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_error.xml" value="0.33" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_list_create_success.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_login_failed.xml" value="0.3804347826086957" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_login_mail.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_login_success.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_registration_success.xml" value="0.327445652173913" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/dialog_success.xml" value="0.38269927536231885" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_all_boards.xml" value="0.3875" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_config.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_info.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_invite.xml" value="0.22950819672131148" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_list.xml" value="0.3875" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_member_list.xml" value="0.25" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_menu.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_menu_info.xml" value="1.3898026315789473" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_board_owner.xml" value="0.38269927536231885" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_card_item.xml" value="0.5" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_card_item.xml" value="0.25" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_board.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_board_permission.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_card.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_card_participant.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_card_participants.xml" value="0.38269927536231885" />
+        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_card.xml" value="0.5" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_create_list.xml" value="0.33" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_dashboard.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_home.xml" value="0.33" />
@@ -63,12 +47,7 @@
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_list.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_list_item.xml" value="0.33" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_login_mail_dialog.xml" value="0.20208333333333334" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_member_item_selectable.xml" value="0.4745762711864407" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_notification_item.xml" value="0.67" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_notifications.xml" value="0.327445652173913" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_profile.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_select_member.xml" value="0.3804347826086957" />
-        <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/fragment_user_avatar.xml" value="0.3808876811594203" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/list_fragment.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/login_mail_dialog.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/layout/login_mail_fragment.xml" value="0.327445652173913" />
@@ -80,36 +59,8 @@
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/menu/homepage_toolbar_menu.xml" value="0.3875" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_auth.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_board.xml" value="0.34556159420289856" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_card.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_home.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_login.xml" value="0.18085106382978725" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_registration.xml" value="0.25" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_verification.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_error.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_login_failed.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_login_mail.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_login_success.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_registration_success.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/dialog_success.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_board_config.xml" value="0.34556159420289856" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_board_list.xml" value="0.22" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_board_menu.xml" value="0.34556159420289856" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_card_item.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_create_board.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_create_card.xml" value="0.34556159420289856" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.34556159420289856" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_home.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_home_board_item.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_home_board_list.xml" value="0.5" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_login.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_profile_edit.xml" value="0.33" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_splash.xml" value="0.2015625" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Duy/StudioProjects/zelinn_mobile/app/src/main/res/xml/file_paths.xml" value="0.34556159420289856" />
+        <entry key="..\:/Users/Lap/StudioProjects/zelinn_mobile/app/src/main/res/layout/activity_auth.xml" value="0.371875" />
+        <entry key="..\:/Users/Lap/StudioProjects/zelinn_mobile/app/src/main/res/layout/fragment_splash.xml" value="0.371875" />
       </map>
     </option>
   </component>
