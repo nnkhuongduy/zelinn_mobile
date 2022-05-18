@@ -119,7 +119,7 @@ class BoardMenuConfigFragment: Fragment() {
 
     private fun populate() {
         val board = model.board.value ?: return
-        isOwner = board.owner.id == Hawk.get<UserModel>(getString(R.string.preference_current_user)).id
+        isOwner = board.owner.id == ZelinnApp.prefs.pull<UserModel>(getString(R.string.preference_current_user)).id
 
         nameText.isEnabled = isOwner
         permissionBtn.isEnabled = isOwner
