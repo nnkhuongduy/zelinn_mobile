@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.NotificationModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.FragmentNotificationBinding
 import com.example.zelinn.interfaces.ConfirmBoardInvitationBody
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
 import io.ak1.BubbleTabBar
 import retrofit2.Call
 import retrofit2.Callback
@@ -138,7 +138,7 @@ class NotificationFragment: Fragment() {
 
                 if (response.isSuccessful) {
                     getNotifications()
-                    Hawk.put(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
                 }
             }
 

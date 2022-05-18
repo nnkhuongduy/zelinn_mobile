@@ -165,6 +165,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/board_menu_config_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -193,6 +194,40 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:text="@string/common_config"
+                android:textAlignment="center"
+                android:textColor="@color/gray3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/board_menu_leave_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/board_menu_leave_btn"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/danger"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ic_login"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="@string/board_menu_leave"
                 android:textAlignment="center"
                 android:textColor="@color/gray3" />
         </LinearLayout>

@@ -19,11 +19,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.zelinn.HomeActivity
 import com.example.zelinn.ui.board_list.BoardListFragment
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.adapters.BoardAdapter
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentHomeBoardListBinding
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 
 class HomeBoardListFragment : Fragment() {
     private lateinit var swipeLayout: SwipeRefreshLayout
@@ -77,9 +78,9 @@ class HomeBoardListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (Hawk.get<Boolean>(getString(R.string.preference_user_flag)) == true) {
-            populate()
-        }
+//        if (ZelinnApp.prefs.pull(getString(R.string.preference_user_flag), false)) {
+//            populate()
+//        }
     }
 
     override fun onDestroyView() {
@@ -89,7 +90,7 @@ class HomeBoardListFragment : Fragment() {
 
     private fun populate() {
         if (model.boards.value != null) {
-            val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
+            val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
             val boards = model.boards.value!!.filter { board -> user.favBoards.contains(board.id) }
 
             adapter.apply {

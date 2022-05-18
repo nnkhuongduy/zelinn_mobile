@@ -22,14 +22,17 @@ interface ApiService {
     @POST("/boards/invite")
     fun inviteToBoard(@Body requestBody: PostInviteBoardBody): Call<Void>
 
-    @GET("/boards/members/query")
-    fun queryMembersToInvite(@Query("board") board: String, @Query("value") query: String): Call<List<MemberModel>>
+    @POST("/boards/members/query")
+    fun queryMembersToInvite(@Body() requestBody: QueryUserInviteBody): Call<List<MemberModel>>
 
     @POST("/boards/invite/response")
     fun confirmBoardInvitation(@Body() requestBody: ConfirmBoardInvitationBody): Call<Void>
 
     @POST("/boards/members/remove")
     fun removeMembers(@Body() requestBody: RemoveMembersBody): Call<Void>
+
+    @POST("/boards/leave")
+    fun leaveBoard(@Body() requestLeaveBoardBody: LeaveBoardBody): Call<Void>
 
     @POST("/auth/login")
     suspend fun login(@Body requestBody: PostLoginBody): Response<Void>

@@ -12,10 +12,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentBoardOwnerBinding
 import com.example.zelinn.ui.board.BoardViewModel
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 
 class BoardMenuOwnerFragment: Fragment() {
     private lateinit var closeBtn: Button
@@ -48,7 +49,7 @@ class BoardMenuOwnerFragment: Fragment() {
         searchText.doOnTextChanged { text, start, before, count ->
             populate(text.toString())
         }
-        adapter.owner = Hawk.get(getString(R.string.preference_current_user))
+        adapter.owner = ZelinnApp.prefs.pull(getString(R.string.preference_current_user))
         adapter.itemClickCallback = {member ->
             val owner = UserModel(member.id, member.email, member.name, "", member.avatar, emptyList())
             model.setTempOwner(owner)
@@ -80,7 +81,8 @@ class BoardMenuOwnerFragment: Fragment() {
 
         adapter.apply {
             submitList(board.members.filter {
-                it.id != Hawk.get<UserModel>(getString(R.string.preference_current_user)).id &&
+                val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
+                return@filter it.id != user.id &&
                 (it.name.contains(query ?: "") || it.email.contains(query ?: ""))
             })
         }

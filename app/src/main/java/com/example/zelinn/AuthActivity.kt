@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.ActivityAuthBinding
-import com.orhanobut.hawk.Hawk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

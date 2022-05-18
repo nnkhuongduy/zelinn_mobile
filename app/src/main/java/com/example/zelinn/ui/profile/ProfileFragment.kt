@@ -13,9 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.zelinn.AuthActivity
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentProfileBinding
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import io.ak1.BubbleTabBar
 
 class ProfileFragment: Fragment() {
@@ -65,7 +66,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun populate() {
-        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
+        val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
 
         if (user.avatar.isNullOrBlank())
             imageView.setImageResource(R.drawable.ic_person)
@@ -80,8 +81,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun logout() {
-        Hawk.delete(getString(R.string.preference_jwt))
-        Hawk.delete(getString(R.string.preference_current_user))
+        ZelinnApp.prefs.clear()
 
         val activity = requireActivity()
         val intent = Intent(activity, AuthActivity::class.java)

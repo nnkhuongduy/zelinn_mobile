@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.MemberModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
@@ -24,7 +25,7 @@ import com.example.zelinn.databinding.FragmentBoardMemberListBinding
 import com.example.zelinn.interfaces.RemoveMembersBody
 import com.example.zelinn.ui.board.BoardViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,8 +64,9 @@ class BoardMemberListFragment : Fragment() {
         searchText = root.findViewById(R.id.board_menu_member_list_search)
 
         model.board.observe(viewLifecycleOwner) {
+            val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
             isOwner =
-                it.owner.id == Hawk.get<UserModel>(getString(R.string.preference_current_user)).id
+                it.owner.id == user.id
             adapter.selectable = isOwner
             removeBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
 
@@ -145,7 +147,7 @@ class BoardMemberListFragment : Fragment() {
         val query = model.memberListQuery.value ?: ""
 
         adapter.apply {
-            submitList(board.members.filter { it.name.contains(query) || it.email.contains(query) })
+            submitList(board.members.filter { it.name.contains(query) || (it.email ?: "").contains(query) })
         }
     }
 

@@ -8,10 +8,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.MemberModel
 import com.example.zelinn.classes.UserModel
 import com.google.android.material.card.MaterialCardView
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 
 class BoardMemberListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private lateinit var avatarView: ImageView
@@ -29,6 +30,8 @@ class BoardMemberListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
         onClickListener: ((MemberModel, Boolean) -> Unit)?,
         selectable: Boolean
     ) {
+        val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(itemView.context.getString(R.string.preference_current_user)), UserModel::class.java)
+
         avatarView = itemView.findViewById(R.id.member_item_selectable_avatar)
         nameText = itemView.findViewById(R.id.member_item_selectable_name)
         emailText = itemView.findViewById(R.id.member_item_selectable_email)
@@ -42,7 +45,7 @@ class BoardMemberListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
 
         nameText.text = member.name
         pendingView.visibility = if (member.pending) View.VISIBLE else View.GONE
-        selectBtn.visibility = if (selectable && member.id != Hawk.get<UserModel>(itemView.resources.getString(R.string.preference_current_user)).id && !member.pending) View.VISIBLE else View.GONE
+        selectBtn.visibility = if (selectable && member.id != user.id && !member.pending) View.VISIBLE else View.GONE
         emailText.visibility = if (selectable) View.VISIBLE else View.GONE
         emailText.text = member.email
 

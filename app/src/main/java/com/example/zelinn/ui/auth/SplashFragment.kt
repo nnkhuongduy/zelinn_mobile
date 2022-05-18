@@ -12,10 +12,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.zelinn.HomeActivity
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentSplashBinding
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +48,7 @@ class SplashFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val jwt = Hawk.get<String>(getString(R.string.preference_jwt))
+        val jwt = ZelinnApp.prefs.pull(getString(R.string.preference_jwt), "")
 
         if (!jwt.isNullOrEmpty()) {
             RetrofitInstance.retrofit.auth().enqueue(object: Callback<UserModel> {
@@ -55,7 +56,7 @@ class SplashFragment: Fragment() {
                     val user = response.body()
 
                     if (response.isSuccessful && user != null) {
-                        Hawk.put(getString(R.string.preference_current_user), user)
+                        ZelinnApp.prefs.push(getString(R.string.preference_current_user), Gson().toJson(user))
 
                         val activity = requireActivity()
                         val intent = Intent(requireActivity(), HomeActivity::class.java)
@@ -69,6 +70,29 @@ class SplashFragment: Fragment() {
                 }
             })
         } else showLoginLayout()
+//        val jwt = ZelinnApp.prefs.pull(getString(R.string.preference_jwt), "")
+//
+//        if (!jwt.isNullOrEmpty()) {
+//            RetrofitInstance.retrofit.auth().enqueue(object: Callback<UserModel> {
+//                override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+//                    val user = response.body()
+//
+//                    if (response.isSuccessful && user != null) {
+//                        ZelinnApp.prefs.push(getString(R.string.preference_current_user), user)
+//
+//                        val activity = requireActivity()
+//                        val intent = Intent(requireActivity(), HomeActivity::class.java)
+//                        activity.startActivity(intent)
+//                        activity.finish()
+//                    } else showLoginLayout()
+//                }
+//
+//                override fun onFailure(call: Call<UserModel>, t: Throwable) {
+//                    showLoginLayout()
+//                }
+//            })
+//        } else showLoginLayout()
+//        showLoginLayout()
     }
 
     override fun onDestroyView() {

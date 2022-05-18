@@ -22,7 +22,6 @@ import com.example.zelinn.ui.home.HomeViewModel
 import com.example.zelinn.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import com.orhanobut.hawk.Hawk
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,9 +64,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onPostResume() {
         super.onPostResume()
 
-        if (Hawk.get<Boolean>(getString(R.string.preference_board_flag)) == true) {
-            getBoards(null)
-        }
+//        if (ZinnApp.prefs.pull(getString(R.string.preference_board_flag), false)) {
+//            getelBoards(null)
+//        }
     }
 
     override fun onBackPressed() {
@@ -83,8 +82,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        if (Hawk.get<Boolean>(getString(R.string.preference_board_flag)) == true) {
-            getBoards(null)
+        try {
+            if (ZelinnApp.prefs.pull(getString(R.string.preference_board_flag), false)) {
+                getBoards(null)
+            }
+        } catch (e: Exception) {
+
         }
     }
 
@@ -98,7 +101,7 @@ class HomeActivity : AppCompatActivity() {
                 if (response.isSuccessful && boards != null) {
                     model.setBoards(boards)
                     model.setBoardsFlag(false)
-                    Hawk.put(getString(R.string.preference_board_flag), false)
+                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), false)
 
                     if (layout != null) layout.isRefreshing = false
                 }

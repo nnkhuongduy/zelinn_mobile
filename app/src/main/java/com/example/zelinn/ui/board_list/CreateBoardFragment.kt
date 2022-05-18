@@ -31,7 +31,6 @@ import com.example.zelinn.interfaces.UploadBoardThumbnailResponse
 import com.example.zelinn.ui.home.HomeViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.orhanobut.hawk.Hawk
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

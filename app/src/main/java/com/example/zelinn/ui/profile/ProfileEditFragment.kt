@@ -17,12 +17,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentProfileEditBinding
 import com.example.zelinn.interfaces.PostEditUserBody
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import io.ak1.BubbleTabBar
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -98,7 +99,7 @@ class ProfileEditFragment : Fragment() {
     }
 
     private fun populate() {
-        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
+        val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
 
         if (!user.avatar.isNullOrEmpty())
             Glide
@@ -184,7 +185,7 @@ class ProfileEditFragment : Fragment() {
                 val user = response.body()
 
                 if (response.isSuccessful && user != null) {
-                    Hawk.put(getString(R.string.preference_current_user), user)
+                    ZelinnApp.prefs.push(getString(R.string.preference_current_user), Gson().toJson(user))
                     showSuccessDialog()
                 } else showErrorDialog(response.code())
             }
@@ -211,7 +212,7 @@ class ProfileEditFragment : Fragment() {
                     if (imageUri != null)
                         postUploadAvatar()
                     else {
-                        Hawk.put(getString(R.string.preference_current_user), user)
+                        ZelinnApp.prefs.push(getString(R.string.preference_current_user), Gson().toJson(user))
                         showSuccessDialog()
                     }
                 } else showErrorDialog(response.code())

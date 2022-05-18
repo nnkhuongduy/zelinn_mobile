@@ -103,13 +103,21 @@ class LoginFragment: Fragment() {
         }
     }
 
-    private fun createFailDialog() {
+    private fun createFailDialog(code: Int) {
         val builder = MaterialAlertDialogBuilder(requireContext()).setView(R.layout.dialog_error)
         val dialog = builder.show()
 
         val title = dialog.findViewById<TextView>(R.id.dialog_error_title)!!
+        val subtitle = dialog.findViewById<TextView>(R.id.dialog_error_subtitle)!!
 
-        title.text = getString(R.string.login_failed);
+        when (code) {
+            503 -> {
+                title.text = getString(R.string.login_limited_title)
+                subtitle.text = getString(R.string.login_limited_subtitle)
+                subtitle.visibility = View.VISIBLE
+            }
+            else -> title.text = getString(R.string.login_failed);
+        }
     }
 
     private fun onLogging() {
@@ -144,7 +152,7 @@ class LoginFragment: Fragment() {
                         if (response.code() == 404)
                             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
 
-                        else createFailDialog()
+                        else createFailDialog(response.code())
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package com.example.zelinn.interfaces
 
 import com.example.zelinn.classes.MemberModel
+import org.json.JSONObject
 import java.util.*
 
 data class PostBoardBody(val name: String, val thumbnail: String, val permission: String)
@@ -33,3 +34,7 @@ data class RemoveMembersBody(val board: String, val members: List<String>)
 data class CreateListBody(val board: String, val name: String, val position: Int)
 
 data class CreateCardBody(val list: String, val name: String, val start: String?, val due: String?, val participants: List<String>?, val description: String)
+
+data class LeaveBoardBody(val board: String)
+
+data class QueryUserInviteBody(val board: String, val query: String)

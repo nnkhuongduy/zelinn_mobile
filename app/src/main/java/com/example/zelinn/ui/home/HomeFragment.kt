@@ -1,5 +1,7 @@
 package com.example.zelinn.ui.home
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,9 +13,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentHomeBinding
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import io.ak1.BubbleTabBar
 
 class HomeFragment : Fragment() {
@@ -34,8 +37,10 @@ class HomeFragment : Fragment() {
 
         requireActivity().findViewById<BubbleTabBar>(R.id.bottom_nav_menu).setSelectedWithId(R.id.navigation_dashboard, false)
 
+        ZelinnApp.prefs.push("key", "encrypted value")
+
         val textView: TextView = binding.textView8
-        val user = Hawk.get<UserModel>(getString(R.string.preference_current_user))
+        val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
         textView.text = "${getString(R.string.homepage_gretting)} ${if (user.name.length > 10) user.name.substring(0, 10) + "..." else user.name} \uD83D\uDC4B"
 
         return root

@@ -13,18 +13,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.zelinn.HomeActivity
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.interfaces.PostVerifyBody
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentVerificationBinding
 import com.example.zelinn.interfaces.PostVerifyResponse
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import com.raycoarana.codeinputview.CodeInputView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -126,7 +123,7 @@ class VerificationFragment: Fragment() {
                 val body = response.body()
 
                 if (response.isSuccessful && body != null) {
-                    Hawk.put(getString(R.string.preference_current_user), body)
+                    ZelinnApp.prefs.push(getString(R.string.preference_current_user), Gson().toJson(body))
                     toHomepage()
                 }
 
@@ -149,7 +146,7 @@ class VerificationFragment: Fragment() {
                 val body = response.body()
 
                 if (response.isSuccessful && body != null) {
-                    Hawk.put(getString(R.string.preference_jwt), body.token)
+                    ZelinnApp.prefs.push(getString(R.string.preference_jwt), body.token)
                     getAuth()
                     return
                 }
@@ -163,24 +160,5 @@ class VerificationFragment: Fragment() {
                 showErrorDialog(500)
             }
         })
-
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val response = RetrofitInstance.retrofit.verifyUser(body)
-//
-//            withContext(Dispatchers.Main) {
-//                if (response.isSuccessful) {
-//                    val jwt = response.body()
-//
-//                    if (!jwt.isNullOrEmpty()) {
-//                        Hawk.put("jwt", jwt)
-//                        getAuth()
-//                        return@withContext
-//                    }
-//                }
-//
-//                onVerifyFinish()
-//                showErrorDialog(response.code())
-//            }
-//        }
     }
 }

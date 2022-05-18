@@ -18,6 +18,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.FragmentBoardConfigBinding
@@ -26,7 +27,6 @@ import com.example.zelinn.interfaces.UploadBoardThumbnailResponse
 import com.example.zelinn.ui.board_list.CreateBoardPermissionFragment
 import com.example.zelinn.ui.home.HomeViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -219,7 +219,7 @@ class BoardMenuConfigFragment: Fragment() {
                 if (response.isSuccessful) {
                     showSuccessDialog()
                     model.resetBoard()
-                    Hawk.put(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
                 } else {
                     showErrorDialog()
                 }

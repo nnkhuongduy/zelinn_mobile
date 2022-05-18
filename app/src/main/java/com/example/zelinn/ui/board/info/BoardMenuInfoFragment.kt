@@ -16,13 +16,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentBoardInfoBinding
 import com.example.zelinn.interfaces.PostUpdateBoardBody
 import com.example.zelinn.ui.board.BoardViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.orhanobut.hawk.Hawk
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,8 +61,6 @@ class BoardMenuInfoFragment: Fragment() {
 
         populate()
 
-
-
         watchModel()
 
         return root
@@ -85,11 +84,12 @@ class BoardMenuInfoFragment: Fragment() {
     private fun populate() {
         val board = model.updateBoard.value ?: return
         val owner = board.owner
+        val user = Gson().fromJson(ZelinnApp.prefs.pull<String>(getString(R.string.preference_current_user)), UserModel::class.java)
 
         if (owner.avatar != null) Glide.with(requireActivity()).load(owner.avatar).into(avatarView)
         else avatarView.setImageResource(R.drawable.ic_person)
 
-        isOwner = model.board.value!!.owner.id == Hawk.get<UserModel>(getString(R.string.preference_current_user)).id
+        isOwner = model.board.value!!.owner.id == user.id
 
         arrowView.visibility = if (isOwner) View.VISIBLE else View.GONE
 
@@ -164,7 +164,7 @@ class BoardMenuInfoFragment: Fragment() {
         RetrofitInstance.retrofit.postUpdateBoard(body).enqueue(object: Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Hawk.put(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
                     model.resetBoard()
                     showSuccessDialog()
                 } else showErrorDialog()

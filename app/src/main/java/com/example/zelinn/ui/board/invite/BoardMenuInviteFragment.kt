@@ -18,8 +18,10 @@ import com.example.zelinn.classes.MemberModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.FragmentBoardInviteBinding
 import com.example.zelinn.interfaces.PostInviteBoardBody
+import com.example.zelinn.interfaces.QueryUserInviteBody
 import com.example.zelinn.ui.board.BoardViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -133,9 +135,10 @@ class BoardMenuInviteFragment: Fragment() {
 
     private fun queryUsers() {
         val value = searchText.text.toString()
+        val body = QueryUserInviteBody(model.board.value!!.id, value)
         toggleSearchBtnState()
 
-        RetrofitInstance.retrofit.queryMembersToInvite(model.board.value!!.id, value).enqueue(object: Callback<List<MemberModel>> {
+        RetrofitInstance.retrofit.queryMembersToInvite(body).enqueue(object: Callback<List<MemberModel>> {
             override fun onResponse(
                 call: Call<List<MemberModel>>,
                 response: Response<List<MemberModel>>
