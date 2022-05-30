@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="@dimen/main_space"
-    tools:context=".ui.board_list.CreateBoardFragment">
+    tools:context=".ui.boards.create.CreateBoardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -174,7 +174,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:backgroundTint="@color/background"
-            android:text="@string/permission_public"
             android:textAlignment="textEnd"
             android:textColor="@color/gray3"
             android:textStyle="bold"

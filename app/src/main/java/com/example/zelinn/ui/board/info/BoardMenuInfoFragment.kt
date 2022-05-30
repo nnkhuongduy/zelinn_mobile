@@ -164,7 +164,7 @@ class BoardMenuInfoFragment: Fragment() {
         RetrofitInstance.retrofit.postUpdateBoard(body).enqueue(object: Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
                     model.resetBoard()
                     showSuccessDialog()
                 } else showErrorDialog()

@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.zelinn.ui.board.list.BoardListAdapter
+import com.example.zelinn.ui.list.BoardListAdapter
 import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.ListModel
 import com.example.zelinn.classes.RetrofitInstance
@@ -22,7 +22,9 @@ import com.example.zelinn.ui.board.BoardMenuFragment
 import com.example.zelinn.ui.board.BoardViewModel
 import com.example.zelinn.ui.board.card.CardViewModel
 import com.example.zelinn.ui.board.card.CreateCardFragment
-import com.example.zelinn.ui.board.list.CreateListFragment
+import com.example.zelinn.ui.list.CreateListFragment
+import com.example.zelinn.ui.list.ListViewModel
+import com.example.zelinn.ui.list.edit.ListEditFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,6 +40,7 @@ class BoardActivity : AppCompatActivity() {
 
     private val model: BoardViewModel by viewModels()
     private val cardModel: CardViewModel by viewModels()
+    private val listModel: ListViewModel by viewModels()
     private val backPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             closeFragment()
@@ -49,11 +52,23 @@ class BoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board)
 
+        ZelinnApp.prefs.push(getString(R.string.preference_board_flag), false)
+
         findViews()
 
         populate()
 
         watch()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        try {
+            val flag = ZelinnApp.prefs.pull(getString(R.string.preference_board_flag), false)
+
+            if (flag) getBoard()
+        } catch (e: Exception) {}
     }
 
     private fun findViews() {
@@ -104,6 +119,13 @@ class BoardActivity : AppCompatActivity() {
             currentTag = "BOARD_CREATE_LIST"
             val fragment = CreateListFragment()
             createFragment(fragment)
+        }
+        adapter.editListCallback = {
+            currentTag = "BOARD_EDIT_LIST"
+            val fragment = ListEditFragment()
+            createFragment(fragment)
+
+            listModel.setList(it)
         }
 
         recyclerView.layoutManager =
@@ -180,7 +202,6 @@ class BoardActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<ListModel>>, t: Throwable) {
                 onBackPressed()
             }
-
         })
     }
 }

@@ -3,6 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/activity_board.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/activity_card.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/activity_home.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/dialog_confirmation.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/dialog_success.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_board_config.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_board_info.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_board_invite.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_board_item.xml" value="0.5" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_board_list.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_boards.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_card_item.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_create_board.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_create_board_permission.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_create_card.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_create_list.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_dashboard.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_home.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_home_board_item.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_home_board_list.xml" value="0.38269927536231885" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_list_edit.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_list_item.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_notification_item.xml" value="0.1731509191962377" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_pepper.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_pepper_board.xml" value="0.5" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_pepper_item.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_pepper_list.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_pepper_lsit.xml" value="0.2109375" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_profile.xml" value="0.1731509191962377" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_timeline.xml" value="0.22" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/layout/fragment_user_avatar.xml" value="0.1731509191962377" />
+        <entry key="..\:/AndroidProjects/Zelinn/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3875" />
         <entry key="..\:/Users/Duy/.gradle/caches/transforms-3/5423c65485a974611bfb437c61e9a2e1/transformed/material-1.5.0/res/layout/mtrl_alert_dialog.xml" value="0.327445652173913" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/drawable-anydpi-v24/ic_add.xml" value="0.341" />
         <entry key="..\:/Users/Duy/AndroidStudioProjects/Zelinn/app/src/main/res/drawable-anydpi-v24/ic_arrow_downward.xml" value="0.341" />

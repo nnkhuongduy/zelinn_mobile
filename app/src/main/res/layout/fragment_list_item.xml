@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginStart="@dimen/half_space"
     android:layout_marginEnd="@dimen/half_space"
     android:orientation="vertical">
@@ -36,7 +36,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/list_sort_setting_btn"
+            android:id="@+id/list_item_info_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -52,6 +52,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_item_layout">
 
@@ -74,17 +75,20 @@
             android:text="@string/board_create_list"
             android:visibility="gone" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_item_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/half_space"
+            android:layout_weight="1" />
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/list_item_swipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/half_space">
+            android:layout_marginTop="@dimen/half_space"
+            android:visibility="gone">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_item_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/half_space" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 

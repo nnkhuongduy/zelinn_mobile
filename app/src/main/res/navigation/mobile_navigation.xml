@@ -3,48 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/navigation_pepper">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.zelinn.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_boardListFragment"
-            app:destination="@id/boardListFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_navigation_home_to_profileFragment"
-            app:destination="@id/navigation_profile"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_navigation_home_to_notificationFragment"
-            app:destination="@id/navigation_notification" />
-    </fragment>
+        android:id="@+id/navigation_boards"
+        android:name="com.example.zelinn.ui.boards.BoardsFragment"
+        android:label="@string/title_boards"
+        tools:layout="@layout/fragment_boards"/>
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.zelinn.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.zelinn.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/boardListFragment"
-        android:name="com.example.zelinn.ui.board_list.BoardListFragment"
-        android:label="fragment_board_list"
-        tools:layout="@layout/fragment_board_list" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.zelinn.ui.profile.ProfileFragment"
@@ -61,7 +27,8 @@
     <activity
         android:id="@+id/navigation_card"
         android:name="com.example.zelinn.CardActivity"
-        android:label="CardActivity" />
+        android:label="CardActivity"
+        tools:layout="@layout/activity_card"/>
     <fragment
         android:id="@+id/profileEditFragment"
         android:name="com.example.zelinn.ui.profile.ProfileEditFragment"
@@ -75,5 +42,11 @@
     <fragment
         android:id="@+id/navigation_notification"
         android:name="com.example.zelinn.ui.notification.NotificationFragment"
-        android:label="NotificationFragment" />
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification"/>
+    <fragment
+        android:id="@+id/navigation_pepper"
+        android:name="com.example.zelinn.ui.pepper.PepperFragment"
+        android:label="PepperFragment"
+        tools:layout="@layout/fragment_pepper"/>
 </navigation>

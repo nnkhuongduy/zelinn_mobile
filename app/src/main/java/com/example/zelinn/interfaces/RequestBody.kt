@@ -1,5 +1,6 @@
 package com.example.zelinn.interfaces
 
+import com.example.zelinn.classes.ListModel
 import com.example.zelinn.classes.MemberModel
 import org.json.JSONObject
 import java.util.*
@@ -31,10 +32,14 @@ data class ConfirmBoardInvitationBody(val notification: String, val result: Bool
 
 data class RemoveMembersBody(val board: String, val members: List<String>)
 
-data class CreateListBody(val board: String, val name: String, val position: Int)
+data class CreateListBody(val board: String, val name: String, val priority: Int)
 
 data class CreateCardBody(val list: String, val name: String, val start: String?, val due: String?, val participants: List<String>?, val description: String)
 
 data class LeaveBoardBody(val board: String)
 
 data class QueryUserInviteBody(val board: String, val query: String)
+
+data class CompleteCardBody(val card: String)
+
+data class UpdateListBody(val id: String, val name: String, val priority: Int)

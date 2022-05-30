@@ -15,15 +15,23 @@ class ZelinnApp: Application() {
 
     companion object {
         lateinit var appContext: Context
-        val prefs by lazy {
-            return@lazy KsPrefs(appContext) {
-                encryptionType=EncryptionType.KeyStore(android.os.Process.myUid().toString())
-            }
-        }
+        lateinit var prefs: KsPrefs
+//        val prefs = KsPrefs(appContext) {
+//            encryptionType=EncryptionType.KeyStore(android.os.Process.myUid().toString())
+//        }
+//        val prefs by lazy {
+//            return@lazy KsPrefs(appContext) {
+//                encryptionType=EncryptionType.KeyStore(android.os.Process.myUid().toString())
+//            }
+//        }
     }
 
     override fun onCreate() {
         super.onCreate()
         appContext = this
+        prefs = KsPrefs(appContext) {
+            encryptionType=EncryptionType.Base64()
+        }
+
     }
 }

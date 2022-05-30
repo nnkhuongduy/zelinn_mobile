@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/half_space"
     android:layout_marginBottom="@dimen/half_space"
-    tools:context=".ui.board.list.CardItemViewHolder">
+    tools:context=".ui.card.CardItemViewHolder">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_item_card"
@@ -27,11 +27,22 @@
             android:orientation="vertical"
             android:padding="@dimen/sub_space">
 
+            <TextView
+                android:id="@+id/card_item_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/half_space"
+                android:text="List name"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/card_item_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginBottom="@dimen/sub_space"
+                android:layout_marginBottom="@dimen/half_space"
                 android:scaleType="centerCrop" />
 
             <androidx.constraintlayout.widget.ConstraintLayout

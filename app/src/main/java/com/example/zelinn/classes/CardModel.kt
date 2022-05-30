@@ -10,11 +10,13 @@ data class CardModel(
     @SerializedName("_id") @Expose var id: String,
     @SerializedName("name") @Expose var name: String,
     @SerializedName("description") @Expose var description: String,
-    @SerializedName("start") @Expose var start: Date?,
-    @SerializedName("due") @Expose var due: Date?,
+    @SerializedName("start") @Expose var start: Date,
+    @SerializedName("due") @Expose var due: Date,
     @SerializedName("thumbnail") @Expose var thumbnail: String?,
     @SerializedName("participants") @Expose var participants: List<MemberModel>,
     @SerializedName("createdAt") @Expose var createdAt: Date,
+    @SerializedName("completed") @Expose var completed: Boolean,
+//    @SerializedName("list") @Expose @Nullable var list: ListModel?,
 ) : Serializable {
-    override fun toString(): String = "$id; $name; $description; ${start.toString()}; ${due.toString()}; $thumbnail;"
+    override fun toString(): String = "$id; $name; $description; ${start.toString()}; ${due.toString()}; $thumbnail; $createdAt ;$participants; $completed"
 }

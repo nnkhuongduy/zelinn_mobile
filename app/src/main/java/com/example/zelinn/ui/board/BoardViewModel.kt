@@ -92,8 +92,8 @@ class BoardViewModel : ViewModel() {
     }
 
     private fun setUpdateChanged() {
-        val updateBoard = updateBoard.value!!
-        val currentBoard = board.value!!
+        val updateBoard = updateBoard.value ?: return
+        val currentBoard = board.value ?: return
 
         _updateChanged.value =
             updateBoard.name != currentBoard.name ||

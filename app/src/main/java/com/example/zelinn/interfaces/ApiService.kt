@@ -34,6 +34,9 @@ interface ApiService {
     @POST("/boards/leave")
     fun leaveBoard(@Body() requestLeaveBoardBody: LeaveBoardBody): Call<Void>
 
+    @DELETE("/boards")
+    fun deleteBoard(@Query("board") boardId: String): Call<Void>
+
     @POST("/auth/login")
     suspend fun login(@Body requestBody: PostLoginBody): Response<Void>
 
@@ -69,9 +72,30 @@ interface ApiService {
     @GET("/lists")
     fun getLists(@Query("board") board: String): Call<List<ListModel>>
 
+    @GET("/lists/list")
+    fun getList(@Query("list") listId: String?, @Query("card") cardId: String?): Call<ListModel>
+
+    @DELETE("/lists")
+    fun deleteList(@Query("list") listId: String): Call<Void>
+
+    @POST("/lists/update")
+    fun updateList(@Body() body: UpdateListBody): Call<Void>
+
     @POST("/cards")
     fun createCard(@Body requestBody: CreateCardBody): Call<Void>
 
     @GET("/cards")
     fun getCards(@Query("board") board: String?, @Query("list") list: String?): Call<List<CardModel>>
+
+    @GET("/cards/card")
+    fun getCard(@Query("card") cardId: String): Call<CardModel>
+
+    @DELETE("/cards")
+    fun deleteCard(@Query("card") cardId: String): Call<Void>
+
+    @POST("/cards/complete")
+    fun completeCard(@Body() body: CompleteCardBody): Call<Void>
+
+    @GET("/pepper")
+    fun getPepper(@Query("date") date: String): Call<List<PepperModel>>
 }

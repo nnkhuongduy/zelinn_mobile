@@ -258,6 +258,7 @@ class BoardMenuFragment : Fragment() {
                 if (response.isSuccessful && user != null) {
                     ZelinnApp.prefs.push(getString(R.string.preference_current_user), Gson().toJson(user))
                     ZelinnApp.prefs.push(getString(R.string.preference_user_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
                     updateFavorite()
                 }
             }
@@ -277,7 +278,7 @@ class BoardMenuFragment : Fragment() {
                 toggleLeaveBtn()
 
                 if (response.isSuccessful) {
-                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
 
                     val intent = Intent(requireContext(), HomeActivity::class.java)
                     requireActivity().startActivity(intent)

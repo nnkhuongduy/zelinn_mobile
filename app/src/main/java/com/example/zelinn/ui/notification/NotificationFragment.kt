@@ -138,7 +138,7 @@ class NotificationFragment: Fragment() {
 
                 if (response.isSuccessful) {
                     getNotifications()
-                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
                 }
             }
 

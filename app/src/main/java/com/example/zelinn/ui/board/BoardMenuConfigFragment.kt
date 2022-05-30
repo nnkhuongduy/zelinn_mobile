@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,23 +12,22 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.cardview.widget.CardView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.zelinn.HomeActivity
 import com.example.zelinn.R
 import com.example.zelinn.ZelinnApp
-import com.example.zelinn.classes.BoardModel
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.classes.UserModel
 import com.example.zelinn.databinding.FragmentBoardConfigBinding
 import com.example.zelinn.interfaces.PostUpdateBoardBody
 import com.example.zelinn.interfaces.UploadBoardThumbnailResponse
-import com.example.zelinn.ui.board_list.CreateBoardPermissionFragment
-import com.example.zelinn.ui.home.HomeViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -40,8 +40,8 @@ class BoardMenuConfigFragment: Fragment() {
     private lateinit var nameText: EditText
     private lateinit var permissionBtn: Button
     private lateinit var saveBtn: Button
-    private lateinit var archiveBtn: Button
     private lateinit var progressView: ProgressBar
+    private lateinit var deleteBtn: Button
 
     private var _binding: FragmentBoardConfigBinding? = null
     private var isOwner = false
@@ -73,8 +73,8 @@ class BoardMenuConfigFragment: Fragment() {
         nameText = root.findViewById(R.id.board_menu_config_name_text)
         permissionBtn = root.findViewById(R.id.board_menu_config_permission_btn)
         saveBtn = root.findViewById(R.id.board_menu_config_save_btn)
-        archiveBtn = root.findViewById(R.id.board_menu_config_archive_btn)
         progressView = root.findViewById(R.id.board_menu_config_progress)
+        deleteBtn = root.findViewById(R.id.board_menu_config_delete_btn)
 
         populate()
 
@@ -108,6 +108,9 @@ class BoardMenuConfigFragment: Fragment() {
         model.updateChanged.observe(viewLifecycleOwner) {
             saveBtn.isEnabled = it
         }
+        deleteBtn.setOnClickListener {
+            showDeleteDialog()
+        }
 
         return root
     }
@@ -119,17 +122,17 @@ class BoardMenuConfigFragment: Fragment() {
 
     private fun populate() {
         val board = model.board.value ?: return
-        isOwner = board.owner.id == ZelinnApp.prefs.pull<UserModel>(getString(R.string.preference_current_user)).id
+        isOwner = board.owner.id == Gson().fromJson(ZelinnApp.prefs.pull<String>(requireContext().getString(R.string.preference_current_user)), UserModel::class.java).id
 
         nameText.isEnabled = isOwner
         permissionBtn.isEnabled = isOwner
         saveBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
-        archiveBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
+        deleteBtn.visibility = if (isOwner) View.VISIBLE else View.GONE
     }
 
     private fun createPermissionFragment() {
         val activity = requireActivity()
-        val fragment = CreateBoardPermissionFragment()
+        val fragment = BoardPermissionFragment()
 
         activity.onBackPressedDispatcher.addCallback(backPressedCallback)
         activity.supportFragmentManager.beginTransaction()
@@ -154,7 +157,7 @@ class BoardMenuConfigFragment: Fragment() {
         permissionBtn.isEnabled = false
         saveBtn.isEnabled = false
         saveBtn.text = ""
-        archiveBtn.isEnabled = false
+        deleteBtn.isEnabled = false
         progressView.visibility = View.VISIBLE
     }
 
@@ -163,7 +166,7 @@ class BoardMenuConfigFragment: Fragment() {
         permissionBtn.isEnabled = true
         saveBtn.isEnabled = true
         saveBtn.text = getString(R.string.common_save)
-        archiveBtn.isEnabled = true
+        deleteBtn.isEnabled = true
         progressView.visibility = View.GONE
     }
 
@@ -235,7 +238,7 @@ class BoardMenuConfigFragment: Fragment() {
                 if (response.isSuccessful) {
                     showSuccessDialog()
                     model.resetBoard()
-                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
                 } else {
                     showErrorDialog()
                 }
@@ -252,5 +255,43 @@ class BoardMenuConfigFragment: Fragment() {
 
         if (model.updateUri.value == null) postUpdateBoard(model.board.value!!.thumbnail)
         else uploadThumbnail()
+    }
+
+    private fun showDeleteDialog() {
+        val builder = MaterialAlertDialogBuilder(requireContext()).setView(R.layout.dialog_confirmation)
+        val dialog = builder.show()
+
+        val titleView = dialog.findViewById<TextView>(R.id.dialog_confirmation_title)!!
+        val descriptionView = dialog.findViewById<TextView>(R.id.dialog_confirmation_description)!!
+        val thumbnailView = dialog.findViewById<CardView>(R.id.dialog_confirmation_thumbnail_card)!!
+        val confirmBtn = dialog.findViewById<Button>(R.id.dialog_confirmation_confirm_btn)!!
+        val cancelBtn = dialog.findViewById<Button>(R.id.dialog_confirmation_cancel_btn)!!
+
+        descriptionView.visibility = View.GONE
+        thumbnailView.visibility = View.GONE
+
+        titleView.text = getString(R.string.board_menu_delete_confirmation)
+
+        cancelBtn.setOnClickListener { dialog.dismiss() }
+        confirmBtn.setOnClickListener { deleteBoard(); dialog.dismiss() }
+    }
+
+    private fun deleteBoard() {
+        val boardId = (model.board.value?: return).id
+
+        RetrofitInstance.retrofit.deleteBoard(boardId).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    ZelinnApp.prefs.push(getString(R.string.preference_boards_flag), true)
+
+                    val intent = Intent(requireContext(), HomeActivity::class.java)
+                    requireActivity().startActivity(intent)
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.d("failed", "failed")
+            }
+        })
     }
 }

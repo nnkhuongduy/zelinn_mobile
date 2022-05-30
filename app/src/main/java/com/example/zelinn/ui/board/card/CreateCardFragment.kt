@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zelinn.R
+import com.example.zelinn.ZelinnApp
 import com.example.zelinn.classes.RetrofitInstance
 import com.example.zelinn.databinding.FragmentCreateCardBinding
 import com.example.zelinn.interfaces.CreateCardBody
@@ -193,7 +194,6 @@ class CreateCardFragment : Fragment() {
         cardModel.start.observe(viewLifecycleOwner) {
             var dateText = ""
             var timeText = ""
-
             if (it.isDateValid())
                 dateText =
                     "${it.date.toString().padStart(2, '0')}/${it.month.toString().padStart(2, '0')}"
@@ -266,9 +266,12 @@ class CreateCardFragment : Fragment() {
     private fun checkValid() {
         val name = cardModel.name.value
         val description = cardModel.description.value
+        val start = cardModel.start.value
+        val due = cardModel.due.value
+        val participants = cardModel.participants.value
 
         valid =
-            !name.isNullOrEmpty() && !description.isNullOrEmpty()
+            !name.isNullOrEmpty() && !description.isNullOrEmpty() && start != null && due != null && start.isValid() && due.isValid() && !participants.isNullOrEmpty()
 
         createBtn.isEnabled = valid
     }
@@ -357,7 +360,7 @@ class CreateCardFragment : Fragment() {
 
                 if (response.isSuccessful) {
                     showSuccessDialog()
-
+                    ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
                     boardModel.resetList()
                 } else showErrorDialog()
             }

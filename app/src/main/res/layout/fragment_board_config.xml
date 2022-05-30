@@ -142,10 +142,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/board_menu_config_archive_btn"
+        android:id="@+id/board_menu_config_delete_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/danger"
-        android:text="@string/common_archive" />
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/common_delete" />
 
 </LinearLayout>

@@ -13,16 +13,20 @@ class RetrofitInstance {
     companion object {
         val retrofit: ApiService by lazy {
             val httpClient = OkHttpClient.Builder().addInterceptor {
-                return@addInterceptor it.proceed(
-                    it.request().newBuilder().addHeader(
-                        "Authorization",
-                        "Bearer ${ZelinnApp.prefs.pull("com.example.zelinn.JWT", "")}"
-                    ).build()
-                )
+                try {
+                    return@addInterceptor it.proceed(
+                        it.request().newBuilder().addHeader(
+                            "Authorization",
+                            "Bearer ${ZelinnApp.prefs.pull("com.example.zelinn.JWT", "")}"
+                        ).build()
+                    )
+                } catch (e: Exception) {
+                    return@addInterceptor it.proceed(it.request().newBuilder().build())
+                }
             }
             val builder = Retrofit.Builder()
-                .baseUrl("https://zelinn.pw/")
-//                .baseUrl("http://192.168.1.9:3000/")
+//                .baseUrl("https://zelinn.pw/")
+                .baseUrl("http://192.168.1.7:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
             val retrofit = builder
                 .client(httpClient.build())
