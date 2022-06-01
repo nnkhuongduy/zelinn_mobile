@@ -17,6 +17,7 @@ class NotificationItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemVi
     private lateinit var descriptionText: TextView
     private lateinit var dateText: TextView
     private lateinit var iconView: ImageView
+    private lateinit var iconCardView: CardView
     private lateinit var cardView: CardView
     private lateinit var confirmText: TextView
 
@@ -31,6 +32,7 @@ class NotificationItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemVi
         descriptionText = itemView.findViewById(R.id.notification_item_description)
         dateText = itemView.findViewById(R.id.notification_item_date)
         iconView = itemView.findViewById(R.id.notification_item_icon)
+        iconCardView = itemView.findViewById(R.id.notification_item_icon_card)
         cardView = itemView.findViewById(R.id.notification_item_card)
         confirmText = itemView.findViewById(R.id.notification_item_confirm_text)
 
@@ -43,7 +45,7 @@ class NotificationItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemVi
         if (notification.icon != null) {
             Glide.with(itemView).load(notification.icon).into(iconView)
         } else {
-            iconView.visibility = View.INVISIBLE
+            iconCardView.visibility = View.GONE
         }
 
         cardView.setOnClickListener {
