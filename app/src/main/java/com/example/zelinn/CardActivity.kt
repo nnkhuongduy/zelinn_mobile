@@ -41,9 +41,9 @@ class CardActivity: AppCompatActivity() {
     private lateinit var dueTimeText: TextView
     private lateinit var actionBtn: Button
     private lateinit var deleteBtn: Button
+    private lateinit var actionCheckedBtn: Button
 
     private val model: CardViewModel by viewModels()
-    private var isNetworking = false
     private val adapter = ParticipantAdapter()
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -68,6 +68,7 @@ class CardActivity: AppCompatActivity() {
         this.dueTimeText = findViewById(R.id.card_activity_due_time_text)
         this.actionBtn = findViewById(R.id.card_activity_action_btn)
         this.deleteBtn = findViewById(R.id.card_activity_delete_btn)
+        this.actionCheckedBtn = findViewById(R.id.card_activity_action_btn_checked)
     }
 
     private fun init() {
@@ -77,7 +78,6 @@ class CardActivity: AppCompatActivity() {
         avaRView.adapter = adapter
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun watch() {
         model.card.observe(this) {
             populate(it)
@@ -88,14 +88,16 @@ class CardActivity: AppCompatActivity() {
             listText.text = it.name
         }
         actionBtn.setOnClickListener {
-            if (!isNetworking) completeCard()
+            completeCard()
+        }
+        actionCheckedBtn.setOnClickListener {
+            completeCard()
         }
         deleteBtn.setOnClickListener {
-            if (!isNetworking) showDeleteDialog()
+            showDeleteDialog()
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun populate(card: CardModel) {
         adapter.apply {
             submitList(card.participants)
@@ -104,7 +106,7 @@ class CardActivity: AppCompatActivity() {
         Glide.with(this).load(card.thumbnail).into(imageView)
 
         nameText.text = card.name
-        descriptionText.text =card.description
+        descriptionText.text = card.description
 
         startDateText.text = SimpleDateFormat("d'/'M").format(card.start)
         startTimeText.text = SimpleDateFormat("H':'m a").format(card.start)
@@ -112,7 +114,8 @@ class CardActivity: AppCompatActivity() {
         dueDateText.text = SimpleDateFormat("d'/'M").format(card.due)
         dueTimeText.text = SimpleDateFormat("H':'m a").format(card.due)
 
-        actionBtn.compoundDrawableTintList = ContextCompat.getColorStateList(this, if (card.completed) R.color.primary else  R.color.white)
+        actionBtn.visibility = if (card.completed) View.GONE else View.VISIBLE
+        actionCheckedBtn.visibility = if (card.completed) View.VISIBLE else View.GONE
     }
 
     private fun getCard() {
@@ -153,7 +156,6 @@ class CardActivity: AppCompatActivity() {
     }
 
     private fun completeCard() {
-        isNetworking = true
         val card = model.card.value ?: return
         val body = CompleteCardBody(card.id)
 
@@ -161,7 +163,6 @@ class CardActivity: AppCompatActivity() {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     getCard()
-                    isNetworking = false
                     ZelinnApp.prefs.push(getString(R.string.preference_pepper_flag), true)
                     ZelinnApp.prefs.push(getString(R.string.preference_board_flag), true)
                 }
@@ -174,7 +175,6 @@ class CardActivity: AppCompatActivity() {
     }
 
     private fun deleteCard() {
-        isNetworking = true
         val card = model.card.value ?: return
 
         RetrofitInstance.retrofit.deleteCard(card.id).enqueue(object : Callback<Void> {

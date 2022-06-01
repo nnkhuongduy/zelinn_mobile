@@ -1,6 +1,7 @@
 package com.example.zelinn
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
@@ -173,13 +174,11 @@ class BoardActivity : AppCompatActivity() {
 
                 if (response.isSuccessful && board != null) {
                     model.setBoard(board)
-                } else {
-                    onBackPressed()
                 }
             }
 
             override fun onFailure(call: Call<BoardModel>, t: Throwable) {
-                onBackPressed()
+                Log.d("test", "test")
             }
         })
     }
@@ -196,11 +195,11 @@ class BoardActivity : AppCompatActivity() {
 
                 if (response.isSuccessful && lists != null) {
                     model.setLists(lists)
-                } else onBackPressed()
+                }
             }
 
             override fun onFailure(call: Call<List<ListModel>>, t: Throwable) {
-                onBackPressed()
+                Log.d("test", "test")
             }
         })
     }
